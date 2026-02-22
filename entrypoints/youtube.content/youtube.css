@@ -1,0 +1,45 @@
+/* Sidebar */
+ytd-guide-section-renderer.style-scope:nth-child(3),
+ytd-guide-section-renderer.style-scope:nth-child(4),
+ytd-guide-signin-promo-renderer {
+  display: none;
+}
+
+/*  Shorts button in sidebar */
+*:has(> #endpoint[title="Shorts"]) {
+  display: none;
+}
+
+/* Hide shorts in search results */
+grid-shelf-view-model {
+  display: none !important;
+}
+ytd-rich-section-renderer,
+ytd-reel-shelf-renderer {
+  display: none !important;
+}
+/* Hides the short filter option on results page */
+*:has(> * > .ytd-search-filter-renderer[title="Search for Shorts"]) {
+  display: none;
+}
+
+/* hides recommended section while still allowing playlists to be shown */
+#secondary:has(ytd-playlist-panel-renderer[hidden]) {
+  display: none;
+}
+/* hides the recommend when there is a playlist */
+#related {
+  display: none;
+}
+
+/* Hides shorts tab on the channel page */
+yt-tab-shape[tab-title="Shorts"] {
+  display: none;
+}
+
+ytd-rich-grid-renderer {
+  display: none;
+}
+/* TODO figureout how to select the chip renderer for the shorts filter button */
+/* yt-chip-cloud-chip-renderer {
+} */
