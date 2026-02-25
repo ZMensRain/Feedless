@@ -24,7 +24,6 @@ ytd-guide-signin-promo-renderer {
 
 :root[homepage="true"] #masthead-container {
   transform: unset !important;
-  position: unset !important;
 }
 
 :root[homepage="true"] #masthead-container #center {
