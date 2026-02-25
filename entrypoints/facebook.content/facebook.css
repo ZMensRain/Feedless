@@ -1,0 +1,31 @@
+/* Home page */
+:root[page-home="true"][facebook-hide-main-feed="true"] *[role="main"] {
+  display: none;
+}
+
+/* Video page */
+
+:root[page-watch="true"][facebook-hide-videos="true"] *[role="main"] {
+  display: none;
+}
+
+:root[facebook-hide-videos="true"] li:has(a[href*="/watch/"]) {
+  display: none;
+}
+
+/* Gaming */
+:root[facebook-hide-games="true"] {
+  li:has(a[href*="gaming"]) {
+    display: none;
+  }
+}
+
+:root[page-gaming="true"][facebook-hide-games="true"] *[role="main"] {
+  display: none;
+}
+
+:root[page-gaming="true"][facebook-hide-games="true"]
+  *[role="navigation"]:has(a[href*="/gaming/following/"]) {
+  display: none;
+  outline: 1px solid green;
+}
