@@ -37,6 +37,10 @@ yt-tab-shape[tab-title="Shorts"] {
   display: none;
 }
 
+ytd-video-renderer:has(*[href*="shorts"]) {
+  display: none;
+}
+
 ytd-rich-grid-renderer {
   display: none;
 }
