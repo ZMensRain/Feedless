@@ -11,13 +11,14 @@ export default defineContentScript({
   main(ctx) {
     Config(configKeys);
     NewObserver(unfeeder, ctx);
+    unfeeder();
   },
 });
 
 function unfeeder() {
   // nukes shorts
   if (document.URL.includes("shorts")) {
-    let body = document.querySelector("#primary");
+    let body = document.querySelector("ytd-shorts");
     if (body != undefined) body.innerHTML = "";
   }
 
