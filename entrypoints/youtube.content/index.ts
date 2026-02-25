@@ -1,29 +1,20 @@
+import NewObserver from "@/components/observer";
 import "./youtube.css";
+import Config from "@/components/config";
 var menuClosedFlag = false;
+
+const configKeys: StorageItemKey[] = [];
 
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
+  runAt: "document_start",
   main(ctx) {
-    let observer = new MutationObserver(observe);
-    observer.observe(document, { childList: true, subtree: true });
-
-    ctx.addEventListener(window, "wxt:locationchange", ({ newUrl }) => {
-      unfeed();
-    });
+    Config(configKeys);
+    NewObserver(unfeeder, ctx);
   },
 });
 
-function observe(mutations: MutationRecord[]) {
-  for (let mutation of mutations) {
-    if (mutation.type == "childList") {
-      if (mutation.addedNodes.length > 0) {
-        unfeed();
-      }
-    }
-  }
-}
-
-function unfeed() {
+function unfeeder() {
   // nukes shorts
   if (document.URL.includes("shorts")) {
     let body = document.querySelector("#primary");

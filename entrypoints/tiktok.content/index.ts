@@ -1,28 +1,19 @@
+import NewObserver from "@/components/observer";
+import Config from "@/components/config";
 import "./tiktok.css";
+
+const configKeys: StorageItemKey[] = ["local:"];
 
 export default defineContentScript({
   matches: ["*://*.tiktok.com/*"],
+  runAt: "document_start",
   main(ctx) {
-    let observer = new MutationObserver(observe);
-    observer.observe(document, { childList: true, subtree: true });
-
-    ctx.addEventListener(window, "wxt:locationchange", ({ newUrl }) => {
-      unfeed();
-    });
+    NewObserver(unfeeder, ctx);
+    Config(configKeys);
   },
 });
 
-function observe(mutations: MutationRecord[]) {
-  for (let mutation of mutations) {
-    if (mutation.type == "childList") {
-      if (mutation.addedNodes.length > 0) {
-        unfeed();
-      }
-    }
-  }
-}
-
-function unfeed() {
+function unfeeder() {
   // nukes shorts
   let body = document.querySelector("body");
   if (body != undefined) body.innerHTML = "";
