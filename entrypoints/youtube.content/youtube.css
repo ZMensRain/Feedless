@@ -43,3 +43,56 @@ ytd-rich-grid-renderer {
 /* TODO figureout how to select the chip renderer for the shorts filter button */
 /* yt-chip-cloud-chip-renderer {
 } */
+
+/* Centering the search bar on the home screen */
+
+:root[homepage="true"] #masthead-container {
+  transform: unset !important;
+  position: unset !important;
+}
+
+:root[homepage="true"] #masthead-container #center {
+  position: fixed;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  outline: 1px solid red;
+  justify-content: center;
+  pointer-events: none;
+}
+
+:root[homepage="true"] #masthead-container #center > * {
+  pointer-events: auto;
+}
+:root[homepage="true"] yt-searchbox {
+  flex: unset !important;
+  min-width: 50vw;
+}
+
+:root[homepage="true"] ytd-topbar-logo-renderer {
+  position: fixed;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 209px !important;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: end;
+  justify-content: center;
+  margin-bottom: 200px;
+  pointer-events: none;
+}
+
+:root[homepage="true"] ytd-topbar-logo-renderer a#logo {
+  scale: 2;
+  pointer-events: all;
+}
+
+:root[homepage="true"] #logo * {
+  position: unset;
+}

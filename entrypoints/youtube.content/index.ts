@@ -22,9 +22,13 @@ function unfeeder() {
   }
 
   // removes the grid on home screen of youtube
-  if (document.URL != "https://www.youtube.com/") return;
+  if (document.URL != "https://www.youtube.com/") {
+    document.querySelector(":root")?.setAttribute("homepage", "false");
+    return;
+  }
   let primary = document.getElementById("primary");
   if (primary != undefined) primary.innerHTML = "";
+  document.querySelector(":root")?.setAttribute("homepage", "true");
 
   // close the sidebar
   if (!menuClosedFlag) {
