@@ -29,3 +29,19 @@
   display: none;
   outline: 1px solid green;
 }
+
+/* marketplace */
+
+:root[facebook-marketplace-searchbox="true"][page-marketplace="true"]
+  *[role="main"] {
+  display: none;
+}
+
+/* removes the feed at the bottom of a marketplace post */
+/* the div with the text area is the div that holds the current item */
+:root[facebook-marketplace-searchbox="true"][page-marketplace="true"]
+  div:has(textarea)
+  ~ div:has(*[attributionsrc], a[href*="/marketplace/item/"]) {
+  outline: 2px solid red;
+  display: none;
+}
