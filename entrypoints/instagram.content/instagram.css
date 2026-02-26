@@ -1,0 +1,35 @@
+/* Home page feed  */
+section:has(> main) {
+  justify-content: end;
+}
+
+:root[page-home="true"][instagram-no-feed="true"] main {
+  display: none;
+}
+
+/* explore page feed*/
+:root[page-explore="true"][instagram-no-explore="true"] main {
+  display: none;
+}
+
+/* explore sidebar button */
+:root[instagram-no-explore="true"] div:has(> span):has(a[href*="explore"]) {
+  display: none;
+  outline: 1px solid red;
+}
+
+/* reels sidebar button */
+:root[instagram-no-reels="true"] div:has(> span):has(a[href*="reels"]) {
+  display: none;
+  outline: 1px solid red;
+}
+
+:root[instagram-no-reels="true"] *[role="toolbar"] {
+  display: none;
+  outline: 2px solid red;
+}
+
+:root[instagram-no-reels="true"] div:has(> a[href*="reels"]) {
+  outline: 1px solid red;
+  display: none;
+}
