@@ -78,7 +78,10 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     Keys: [...feedKeys("facebook"), ...shortFormKeys("facebook")],
   },
   "www.instagram.com": {
-    Keys: [...feedKeys("instagram"), ...shortFormKeys("instagram")],
+    Keys: [
+      ...feedKeys("instagram", ["explore"]),
+      ...shortFormKeys("instagram"),
+    ],
   },
 };
 
