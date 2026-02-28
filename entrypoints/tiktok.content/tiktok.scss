@@ -1,0 +1,104 @@
+:root[tiktok-shortform="block"],
+:root[tiktok-shortform="hide"] {
+  // hides buttons used for scrolling
+  button[class*="StyledVideoSwitch"],
+  div[class*="DivFeedNavigationContainer"] {
+    outline: 1px solid red;
+    display: none !important;
+  }
+
+  div[class*="DivRelatedTabContainer"] {
+    display: none;
+  }
+  #related {
+    display: none;
+  }
+
+  article[id^="one-column"]:not([id*="-0"]) {
+    display: none;
+    outline: 1px solid red;
+  }
+}
+// "live", "following"
+
+// homepage
+:root[page-path="/"][tiktok-hide-feed="true"] {
+  article {
+    display: none;
+  }
+}
+
+// explore page
+:root[page-path="/explore/"][tiktok-hide-explore-feed="true"] {
+  #main-content-explore_page,
+  div[class*="ExploreLayout"] {
+    display: none;
+  }
+}
+
+// live page
+:root[page-path="/live/"][tiktok-hide-live-feed="true"] {
+  div:has([href="/live"]) ~ div:has(video) {
+    display: none;
+  }
+
+  div:has(> a[href*="@"]) {
+    display: none !important;
+  }
+}
+
+// following page
+:root[page-path="/following/"][tiktok-hide-following-feed="true"] {
+  main {
+    display: none;
+  }
+}
+
+//search page
+:root[page-path="/search/"][tiktok-hide-search-feed="true"] {
+  #main-content-general_search {
+    display: none;
+  }
+}
+
+// live button
+:root[tiktok-hide-live-feed="true"] {
+  h2:has([href="/live"]) {
+    display: none;
+  }
+
+  *:has(> a[href="/live"]) {
+    display: none;
+  }
+
+  &[page-path="/following/"] {
+    *:has(> * > a[href="/live"]) {
+      display: none;
+    }
+  }
+}
+
+// explore button
+:root[tiktok-hide-explore-feed="true"] {
+  h2:has([href="/explore"]) {
+    display: none;
+  }
+  *:has(> a[href="/explore"]) {
+    display: none;
+  }
+}
+
+// following button
+:root[tiktok-hide-following-feed="true"] {
+  h2:has([href="/following"]) {
+    display: none;
+  }
+  *:has(> a[href="/following"]) {
+    display: none;
+  }
+}
+
+// hide the log in button in the sidebar
+#header-login-button {
+  display: none;
+}

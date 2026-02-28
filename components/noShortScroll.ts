@@ -10,10 +10,11 @@ export default function AddNoScroll(
   };
 
   const removeCertainKeys = (event: KeyboardEvent) => {
-    if (keys.includes(event.key) && !blocked(event.key)) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    if (blocked(event.key)) return;
+    if (!keys.includes(event.key)) return;
+
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   const passive = false;

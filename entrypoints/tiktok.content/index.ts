@@ -1,20 +1,28 @@
 import NewObserver from "@/components/observer";
 import Config from "@/components/config";
-import "./tiktok.css";
+import "./tiktok.scss";
+import AddNoScroll from "@/components/noShortScroll";
 
-const configKeys: StorageItemKey[] = ["local:"];
+let shortform = "block";
 
 export default defineContentScript({
   matches: ["*://*.tiktok.com/*"],
   runAt: "document_start",
   main(ctx) {
     NewObserver(unfeeder, ctx);
-    Config(configKeys);
+    Config(ConfigurationShape["www.tiktok.com"], onUpdate);
+    AddNoScroll(() => true, ["ArrowDown", "ArrowUp", " "]);
+    unfeeder();
   },
 });
 
+function onUpdate(key: string, value: string) {
+  if (key === "tiktok-shortform") shortform = value;
+}
+
 function unfeeder() {
+  addPath();
   // nukes shorts
-  let body = document.querySelector("body");
-  if (body != undefined) body.innerHTML = "";
+  // let body = document.querySelector("body");
+  // if (body != undefined) body.innerHTML = "";
 }
