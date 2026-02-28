@@ -1,45 +1,29 @@
 import NewObserver from "@/components/observer";
-import "./youtube.css";
-import Config from "@/components/config";
-var menuClosedFlag = false;
+import "./youtube.scss";
+import Config, { ConfigurationShape } from "@/components/config";
+import AddPath from "@/utils/addPath";
+import AddNoScroll from "@/components/noShortScroll";
 
-const configKeys: StorageItemKey[] = [];
+let shortform = "show";
 
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
   runAt: "document_start",
   main(ctx) {
-    Config(configKeys);
+    Config(ConfigurationShape["www.youtube.com"], onUpdate);
     NewObserver(unfeeder, ctx);
+    AddNoScroll(
+      () => !document.URL.includes("shorts") && shortform === "show",
+      ["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp", " "]
+    );
     unfeeder();
   },
 });
 
+function onUpdate(key: string, value: string) {
+  if (key === "youtube-shortform") shortform = value;
+}
+
 function unfeeder() {
-  // nukes shorts
-  if (document.URL.includes("shorts")) {
-    let body = document.querySelector("ytd-shorts");
-    if (body != undefined) body.innerHTML = "";
-  }
-
-  // removes the grid on home screen of youtube
-  if (document.URL != "https://www.youtube.com/") {
-    document.querySelector(":root")?.setAttribute("homepage", "false");
-    return;
-  }
-  let primary = document.getElementById("primary");
-  if (primary != undefined) primary.innerHTML = "";
-  document.querySelector(":root")?.setAttribute("homepage", "true");
-
-  // close the sidebar
-  if (!menuClosedFlag) {
-    let button = document.querySelector(
-      "#masthead #guide-button button[aria-pressed='true']"
-    ) as HTMLButtonElement;
-
-    if (button != undefined) {
-      button.click();
-      menuClosedFlag = true;
-    }
-  }
+  AddPath();
 }

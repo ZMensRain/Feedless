@@ -1,0 +1,54 @@
+/* Hides shorts tab on the channel page */
+
+:root[youtube-shortform="block"],
+:root[youtube-shortform="hide"] {
+  yt-tab-shape[tab-title="Shorts"] {
+    display: none;
+  }
+
+  /*  Shorts button in sidebar */
+  // might break, for some reason the shorts
+  // button does not have an href so we have to do this crap
+  ytd-guide-entry-renderer:has([href="/"])
+    ~ ytd-guide-entry-renderer:has(a:not([href])) {
+    display: none;
+  }
+
+  /* Hide shorts in search results */
+  grid-shelf-view-model {
+    display: none !important;
+  }
+
+  ytd-rich-section-renderer,
+  ytd-reel-shelf-renderer {
+    display: none !important;
+  }
+  // hides shorts that use the normal video renderer
+  ytd-video-renderer:has(*[href*="shorts"]) {
+    display: none !important;
+  }
+
+  /* Hides the short filter option on results page */
+  *:has(> * > .ytd-search-filter-renderer[title*="Shorts"]) {
+    display: none;
+  }
+
+  div:has(> #navigation-button-down) {
+    display: none;
+  }
+  .reel-video-in-sequence-new {
+    display: none;
+  }
+  .reel-video-in-sequence-new[id="0"] {
+    display: block;
+  }
+}
+
+// completely blocks shorts
+:root[youtube-shortform="block"] ytd-shorts {
+  display: none;
+}
+
+/* TODO figureout how to select the chip renderer for the shorts filter button */
+/* yt-chip-cloud-chip-renderer {
+} */

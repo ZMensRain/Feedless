@@ -1,37 +1,111 @@
 export default async function Config(
-  keys: StorageItemKey[],
-  onUpdate?: (key: string, value: string) => {}
+  config: PlatformConfiguration,
+  onUpdate?: (key: string, value: string) => void
 ) {
   try {
-    let unWatches = keys.map(async (key) => {
-      let value = await storage.getItem<string>(key);
-      update(key, value ?? "true");
-      return storage.watch<string>(key, (v) => {
-        const value = v ?? "true";
-
-        onUpdate?.(key, value);
-        update(key, value);
-      });
-    });
-    return {
-      unwatch: () => unWatches.forEach(async (unwatch) => (await unwatch)()),
-    };
+    return fromStorage(config, onUpdate);
   } catch (error) {
-    keys.map((key) => {
-      const value = "true";
-
-      onUpdate?.(key, value);
-      update(key, value);
-    });
+    return fromDefaults(config, onUpdate);
   }
+}
 
+function fromStorage(
+  config: PlatformConfiguration,
+  onUpdate?: (key: string, value: string) => void
+) {
+  let unWatches = config.Keys.map(async (key) => {
+    let value = await storage.getItem<string>(key.Key);
+    update(key.Key, value ?? key.possibleValues[key.DefaultValue]);
+    return storage.watch<string>(key.Key, (v) => {
+      const value = v ?? "true";
+      onUpdate?.(key.Key, value);
+      update(key.Key, value);
+    });
+  });
   return {
-    unwatch: () => {},
+    unwatch: () => unWatches.forEach(async (unwatch) => (await unwatch)()),
   };
 }
 
+function fromDefaults(
+  config: PlatformConfiguration,
+  onUpdate?: (key: string, value: string) => void
+) {
+  config.Keys.map((key) => {
+    const value = key.possibleValues[key.DefaultValue];
+    onUpdate?.(key.Key, value);
+    update(key.Key, value);
+  });
+  return { unwatch: () => {} };
+}
+
 function update(key: string, value: string) {
-  console.log(key);
   key = key.replaceAll("local:", "");
   document.querySelector(":root")?.setAttribute(key, value);
+}
+
+export type ConfigurationKey = {
+  Key: StorageItemKey;
+  possibleValues: string[];
+  DefaultValue: number; // index from the possible values
+};
+
+export type PlatformConfiguration = {
+  Keys: ConfigurationKey[];
+};
+
+export const ConfigurationShape: Record<string, PlatformConfiguration> = {
+  "www.youtube.com": {
+    Keys: [
+      ...shortFormKeys("youtube"),
+      ...feedKeys("youtube"),
+      {
+        Key: "local:youtube-hide-end-screen",
+        DefaultValue: 0,
+        possibleValues: ["true", "false"],
+      },
+    ],
+  },
+  "www.linkedin.com": { Keys: feedKeys("linkedin") },
+  "www.reddit.com": { Keys: feedKeys("reddit") },
+  "www.tiktok.com": { Keys: shortFormKeys("tiktok") },
+  "www.facebook.com": {
+    Keys: [...feedKeys("facebook"), ...shortFormKeys("facebook")],
+  },
+  "www.instagram.com": {
+    Keys: [...feedKeys("instagram"), ...shortFormKeys("instagram")],
+  },
+};
+
+// -------------------------------------------------------------------------------------
+// Utils
+// -------------------------------------------------------------------------------------
+
+function shortFormKeys(platform: string): ConfigurationKey[] {
+  return [
+    {
+      Key: `local:${platform}-shortform`,
+      DefaultValue: 0,
+      possibleValues: ["block", "show", "hide"],
+    },
+  ];
+}
+
+function feedKeys(platform: string, feeds?: string[]): ConfigurationKey[] {
+  if (feeds === undefined) feeds = [];
+
+  return [
+    {
+      Key: `local:${platform}-hide-feed`,
+      DefaultValue: 0,
+      possibleValues: ["true", "false"],
+    },
+    ...feeds.map(
+      (feed): ConfigurationKey => ({
+        Key: `local:${platform}-hide-${feed}-feed`,
+        DefaultValue: 0,
+        possibleValues: ["true", "false"],
+      })
+    ),
+  ];
 }

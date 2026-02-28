@@ -1,0 +1,83 @@
+@use "./shorts.scss";
+
+/* Sidebar */
+ytd-guide-section-renderer:has(a[href*="/premium"]), // hides the more from youtube section from the sidebar
+ytd-guide-section-renderer:has(a[href*="/channel"]), // hides explore section
+ytd-guide-signin-promo-renderer {
+  display: none;
+}
+
+// hides recommended section while still allowing playlists to be shown
+// also makes sure that video is centered
+#secondary:has(ytd-playlist-panel-renderer[hidden]) {
+  display: none;
+}
+
+/* hides the recommend when there is a playlist */
+#related {
+  display: none;
+}
+
+// on homepage
+:root[page-path="/"][youtube-hide-feed="true"] {
+  // hiding the feed
+  ytd-rich-grid-renderer {
+    display: none;
+  }
+
+  /* Centering the searchbar */
+  #masthead-container {
+    transform: unset !important;
+  }
+  #masthead-container #center {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    outline: 1px solid red;
+    justify-content: center;
+    pointer-events: none;
+  }
+  #masthead-container #center > * {
+    pointer-events: auto;
+  }
+  yt-searchbox {
+    flex: unset !important;
+    min-width: 50vw;
+  }
+  ytd-topbar-logo-renderer {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 209px !important;
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: end;
+    justify-content: center;
+    margin-bottom: 200px;
+    pointer-events: none;
+  }
+  ytd-topbar-logo-renderer a#logo {
+    scale: 2;
+    pointer-events: all;
+  }
+  #logo * {
+    position: unset;
+  }
+}
+
+// hides the end screen bits
+:root[youtube-hide-end-screen="true"] {
+  .ytp-ce-element {
+    display: none !important;
+  }
+  .ytp-fullscreen-grid-stills-container {
+    display: none !important;
+  }
+}
