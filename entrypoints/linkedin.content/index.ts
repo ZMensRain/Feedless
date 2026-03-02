@@ -1,25 +1,14 @@
-import "./linkedin.css";
+import NewObserver from "@/components/observer";
+import "./linkedin.scss";
+import Config from "@/components/config";
 
 export default defineContentScript({
   matches: ["*://*.linkedin.com/*"],
+  runAt: "document_start",
   main(ctx) {
-    let observer = new MutationObserver(observe);
-    observer.observe(document, { childList: true, subtree: true });
-
-    ctx.addEventListener(window, "wxt:locationchange", ({ newUrl }) => {
-      unfeed();
-    });
+    NewObserver(unfeeder, ctx);
+    Config(ConfigurationShape["www.linkedin.com"]);
   },
 });
 
-function observe(mutations: MutationRecord[]) {
-  for (let mutation of mutations) {
-    if (mutation.type == "childList") {
-      if (mutation.addedNodes.length > 0) {
-        unfeed();
-      }
-    }
-  }
-}
-
-function unfeed() {}
+function unfeeder() {}
