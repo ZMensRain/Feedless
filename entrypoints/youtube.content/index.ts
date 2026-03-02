@@ -5,6 +5,7 @@ import AddPath from "@/utils/addPath";
 import AddNoScroll from "@/components/noShortScroll";
 
 let shortform = "show";
+let menuBarClosed = false;
 
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
@@ -26,4 +27,8 @@ function onUpdate(key: string, value: string) {
 
 function unfeeder() {
   AddPath();
+  if (!menuBarClosed) {
+    (document.querySelector("#guide-button") as HTMLButtonElement).click();
+    menuBarClosed = true;
+  }
 }
