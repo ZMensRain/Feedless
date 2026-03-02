@@ -14,6 +14,11 @@
     display: none;
   }
 
+  // 
+  ytd-mini-guide-entry-renderer:has([href*="/shorts/"]){
+    display: none;
+  }
+
   /* Hide shorts in search results */
   grid-shelf-view-model {
     display: none !important;
