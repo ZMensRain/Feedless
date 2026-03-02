@@ -1,0 +1,19 @@
+// reels
+:root[page-path*="/reel/"],
+:root[page-path*="/reels/"] {
+  &[facebook-shortform="hide"],
+  &[facebook-shortform="block"] {
+    /* hide next button */
+    div:has(video) ~ div[role="button"] {
+      display: none;
+    }
+    /* hide previous button */
+    div[role="button"]:has(~ div video) {
+      display: none;
+    }
+  }
+
+  &[facebook-shortform="block"] *[role="main"] {
+    display: none;
+  }
+}
