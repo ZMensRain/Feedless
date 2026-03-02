@@ -18,6 +18,14 @@
   div:has(> * > div[data-view-name="identity-module-upsell"]) {
     display: none;
   }
+
+  div:has(> [id*="premium"]) {
+    display: none;
+  }
+
+  .job-details-module:has([href*="premium/products"]) {
+    display: none;
+  }
 }
 
 // hides the add to your feed section
