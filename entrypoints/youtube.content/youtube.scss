@@ -25,6 +25,10 @@ ytd-guide-signin-promo-renderer {
     display: none;
   }
 
+  #home-page-skeleton {
+    display: none !important;
+  }
+
   /* Centering the searchbar */
   #masthead-container {
     transform: unset !important;
@@ -81,3 +85,4 @@ ytd-guide-signin-promo-renderer {
     display: none !important;
   }
 }
+
