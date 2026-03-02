@@ -20,8 +20,14 @@ export default function AddNoScroll(
   const passive = false;
 
   // prevent only those keys that are used for scrolling
-  window.addEventListener("keydown", removeCertainKeys, { passive });
-
+  window.addEventListener("keydown", removeCertainKeys, {
+    capture: true,
+    passive,
+  });
+  window.addEventListener("keyup", removeCertainKeys, {
+    capture: true,
+    passive,
+  });
   // prevent other events that are used for scrolling
   const events = ["scroll", "wheel", "touchmove", "pointerdown", "pointerup"];
   events.forEach((eventType) =>
