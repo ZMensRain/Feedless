@@ -5,7 +5,6 @@ import AddPath from "@/utils/addPath";
 import AddNoScroll from "@/components/noShortScroll";
 
 let shortform = "show";
-let menuBarClosed = false;
 
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
@@ -27,8 +26,18 @@ function onUpdate(key: string, value: string) {
 
 function unfeeder() {
   AddPath();
-  if (!menuBarClosed) {
-    (document.querySelector("#guide-button") as HTMLButtonElement).click();
-    menuBarClosed = true;
+
+  // close the sidebar
+  const menuButton = document.getElementById("guide-button");
+  const menuButtonButton = document.querySelector("#guide-button #button");
+
+  if (
+    menuButton &&
+    menuButtonButton &&
+    menuButtonButton.getAttribute("aria-pressed") == "true" &&
+    menuButton.getAttribute("feedless-pressed") != "true"
+  ) {
+    menuButton.setAttribute("feedless-pressed", "true");
+    menuButton.click();
   }
 }
