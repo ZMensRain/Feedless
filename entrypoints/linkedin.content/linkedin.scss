@@ -1,0 +1,35 @@
+/* Removes feed */
+
+:root[linkedin-hide-feed="true"]
+  div[data-testid="mainFeed"]
+  > :not(:nth-child(1)) {
+  display: none;
+}
+
+:root[linkedin-hide-premium-upsells="true"] {
+  /* premium upsells */
+  div:has(> *[data-view-name="premium-nav-upsell-text"]) {
+    display: none;
+  }
+
+  div:has(> *[data-view-name="premium-upsell-link"]) {
+    display: none;
+  }
+  div:has(> * > div[data-view-name="identity-module-upsell"]) {
+    display: none;
+  }
+
+  div:has(> [id*="premium"]) {
+    display: none;
+  }
+
+  .job-details-module:has([href*="premium/products"]) {
+    display: none;
+  }
+}
+
+// hides the add to your feed section
+:root[linkedin-hide-add-to-your-feed="true"]
+  div:has(> * > [href*="/mynetwork/discover-hub/"]) {
+  display: none;
+}

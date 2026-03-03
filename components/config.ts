@@ -66,7 +66,21 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
       },
     ],
   },
-  "www.linkedin.com": { Keys: feedKeys("linkedin") },
+  "www.linkedin.com": {
+    Keys: [
+      ...feedKeys("linkedin"),
+      {
+        Key: "local:linkedin-hide-premium-upsells",
+        DefaultValue: 0,
+        possibleValues: ["true", "false"],
+      },
+      {
+        Key: "local:linkedin-hide-add-to-your-feed",
+        DefaultValue: 0,
+        possibleValues: ["true", "false"],
+      },
+    ],
+  },
   "www.reddit.com": { Keys: feedKeys("reddit") },
   "www.tiktok.com": {
     Keys: [
