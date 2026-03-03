@@ -1,0 +1,73 @@
+:root[youtube_music-hide-feed="true"][page-path="/"] {
+  #content-wrapper {
+    display: none;
+  }
+  #background {
+    display: none;
+  }
+  *:has(> ytmusic-search-box) {
+    position: static;
+    transform: unset;
+  }
+  ytmusic-search-box {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+
+    margin-bottom: 2rem;
+
+    transform: translate(-50%, -50%);
+
+    max-width: max(480px, 50vw);
+  }
+}
+
+:root[youtube_music-hide-related="true"] {
+  ytmusic-section-list-renderer[page-type="MUSIC_PAGE_TYPE_TRACK_RELATED"] {
+    display: none;
+  }
+  tp-yt-paper-tab:nth-child(4) {
+    display: none !important;
+  }
+}
+
+:root[youtube_music-hide-explore-feed="true"][page-path="/explore/"] {
+  #content-wrapper {
+    display: none;
+  }
+  #background {
+    display: none;
+  }
+
+  *:has(> ytmusic-search-box) {
+    position: static;
+    transform: unset;
+  }
+  ytmusic-search-box {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+
+    margin-bottom: 2rem;
+
+    transform: translate(-50%, -50%);
+
+    max-width: max(480px, 50vw);
+  }
+}
+
+// hides the "Sign in" button in the sidebar
+ytmusic-guide-signin-promo-renderer {
+  display: none !important;
+}
+
+// hides the "Explore" button in the sidebar
+:root[youtube_music-hide-explore-feed="true"]
+  ytmusic-guide-entry-renderer:nth-child(2) {
+  display: none !important;
+}
+
+// hide the premium button in the sidebar
+ytmusic-guide-entry-renderer:last-child {
+  display: none !important;
+}

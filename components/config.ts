@@ -97,6 +97,16 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
       ...shortFormKeys("instagram"),
     ],
   },
+  "music.youtube.com": {
+    Keys: [
+      ...feedKeys("youtube_music", ["explore"]),
+      {
+        Key: "local:youtube_music-hide-related",
+        DefaultValue: 0,
+        possibleValues: ["true", "false"],
+      },
+    ],
+  },
 };
 
 // -------------------------------------------------------------------------------------
