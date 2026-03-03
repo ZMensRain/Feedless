@@ -20,16 +20,16 @@ In cases such as Pinterest where the search results are a feed themselves a spec
 - removing sign in popups/UI except when it is trivial to do so and it does not remove the only way to sign in/signup, when choosing which sign in/signup UI to keep favour the ones in the top right. Instagram for example once the popup appears it is not trivial to remove it and keep a functioning application.
 
 ## Targets
-- [ ] YouTube
-- [ ] LinkedIn
+- [x] YouTube
+- [x] LinkedIn
 - [ ] Reddit
-- [ ] TikTok
+- [x] TikTok
 - [ ] Pinterest
 - [ ] SubStack
 - [ ] Twitter/X
-- [ ] Facebook
+- [x] Facebook
 - [ ] BlueSky
-- [ ] Instagram
+- [x] Instagram
 - [ ] Amazon
-- [ ] YouTube music
+- [x] YouTube music
 - [ ] Spotify
