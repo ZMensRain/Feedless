@@ -26,8 +26,8 @@
   ytmusic-section-list-renderer[page-type="MUSIC_PAGE_TYPE_TRACK_RELATED"] {
     display: none;
   }
-  #tabsContent tp-yt-paper-tab:last-child {
-    display: none;
+  tp-yt-paper-tab:nth-child(4) {
+    display: none !important;
   }
 }
 
