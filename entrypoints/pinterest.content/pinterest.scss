@@ -1,0 +1,50 @@
+:root[pinterest-hide-feed="true"][page-path="/"] {
+  .mainContainer {
+    display: none !important;
+  }
+
+  *:has(> #searchBoxContainer) {
+    background-color: transparent !important;
+  }
+
+  #searchBoxContainer {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+
+    margin-bottom: 10rem;
+
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: max(480px, 50vw);
+  }
+  #SuggestionsMenu {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+:root[pinterest-hide-feed="true"][page-path="/ideas/"] {
+  [data-layout-shift-boundary-id="PageContainer"] {
+    display: none !important;
+  }
+
+  *:has(> #searchBoxContainer) {
+    background-color: transparent !important;
+  }
+
+  #searchBoxContainer {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+
+    margin-bottom: 10rem;
+
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: max(480px, 50vw);
+  }
+  #SuggestionsMenu {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}

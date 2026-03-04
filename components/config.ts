@@ -122,6 +122,10 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     ],
     HumanName: "YouTube Music",
   },
+  "pinterest.com": {
+    HumanName: "Pinterest",
+    Keys: [...feedKeys("pinterest", ["explore"])],
+  },
 };
 
 // -------------------------------------------------------------------------------------
