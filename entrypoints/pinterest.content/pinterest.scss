@@ -1,6 +1,10 @@
 :root[pinterest-hide-feed="true"][page-path="/"] {
-  .mainContainer {
-    display: none !important;
+  [role="main"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 100px !important;
+    overflow-y: hidden;
   }
 
   *:has(> #searchBoxContainer) {
@@ -23,9 +27,13 @@
     right: 0 !important;
   }
 }
-:root[pinterest-hide-feed="true"][page-path="/ideas/"] {
-  [data-layout-shift-boundary-id="PageContainer"] {
-    display: none !important;
+:root[pinterest-hide-explore-feed="true"][page-path*="/ideas/"] {
+  [role="main"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 100px !important;
+    overflow-y: hidden;
   }
 
   *:has(> #searchBoxContainer) {
@@ -46,5 +54,37 @@
   #SuggestionsMenu {
     left: 0 !important;
     right: 0 !important;
+  }
+}
+
+:root[pinterest-hide-search-feed="true"][page-path*="/search/"] {
+  [role="main"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 100px !important;
+    overflow-y: hidden;
+  }
+}
+
+:root[pinterest-hide-related-pins-feed="true"][page-path*="/pin/"] {
+  // hides related pins
+  [role="listitem"]:has([href*="/pin/"]) {
+    width: 1px !important;
+    height: 0px !important;
+    overflow: hidden;
+  }
+
+  // makes the currently viewed pin take the whole screen
+  [role="list"] {
+    height: fit-content !important;
+  }
+
+  // hides the discover related crap
+  [role="listitem"]:has([data-test-id="discover-bubble"]) {
+    display: none;
+  }
+  [role="listitem"]:has([data-test-id="closeup-action-bar"]) {
+    width: 100% !important;
   }
 }
