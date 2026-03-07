@@ -1,10 +1,13 @@
 :root[pinterest-hide-feed="true"][page-path="/"] {
   [role="main"] {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    max-height: 100px !important;
+    max-height: 100vh !important;
     overflow-y: hidden;
+  }
+
+  *:has(> [role="listitem"] [href*="/pin/"]) {
+    visibility: hidden;
+
+    overflow: hidden;
   }
 
   *:has(> #searchBoxContainer) {
@@ -25,15 +28,23 @@
   #SuggestionsMenu {
     left: 0 !important;
     right: 0 !important;
+  }
+
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 :root[pinterest-hide-explore-feed="true"][page-path*="/ideas/"] {
   [role="main"] {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    max-height: 100px !important;
+    max-height: 100vh !important;
     overflow-y: hidden;
+  }
+
+  *:has(> [role="listitem"] [href*="/pin/"]) {
+    visibility: hidden;
+    overflow: hidden;
   }
 
   *:has(> #searchBoxContainer) {
@@ -51,9 +62,17 @@
     width: 100%;
     max-width: max(480px, 50vw);
   }
+  [data-layout-shift-boundary-id="PageContainer"] {
+    visibility: hidden;
+  }
   #SuggestionsMenu {
     left: 0 !important;
     right: 0 !important;
+  }
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -64,6 +83,11 @@
     pointer-events: none;
     max-height: 100px !important;
     overflow-y: hidden;
+  }
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -86,5 +110,11 @@
   }
   [role="listitem"]:has([data-test-id="closeup-action-bar"]) {
     width: 100% !important;
+  }
+
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
   }
 }
