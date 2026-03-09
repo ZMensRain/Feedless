@@ -1,19 +1,31 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #121102;
+    --background: #fdfbed;
+    --primary: #e58a34;
+    --primary-foreground: var(--text);
+    --secondary: #8a9bf0;
+    --accent: #c84ae8;
+    --muted: #ccc;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fdfced;
+    --background: #030303;
+    --primary: #ffef7c;
+    --secondary: #303a74;
+    --accent: #5e04c5;
+    --primary-foreground: var(--background);
+    --muted: #666;
+  }
+}
+
 :root {
-  --background: #fff;
-  --color: #000;
-  --muted: #ccc;
   font-size: 1rem;
   padding: 0rem 1%;
   background-color: var(--background);
-  color: var(--color);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000;
-    --color: #fff;
-    --muted: #666;
-  }
+  color: var(--text);
 }
 
 #app {
@@ -48,4 +60,42 @@ input[type="checkbox"] {
 
 option {
   text-transform: capitalize;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--muted);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Add checkmark when checked */
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-foreground);
+  font-size: 14px;
+}
+
+/* Background when checked */
+input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+select {
+  padding: 0.25rem 1rem;
+  border: 2px solid var(--muted);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--color);
+  cursor: pointer;
 }
