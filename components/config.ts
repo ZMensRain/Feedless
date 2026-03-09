@@ -122,6 +122,17 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     ],
     HumanName: "YouTube Music",
   },
+  "bsky.app": {
+    HumanName: "Bluesky",
+    Keys: [
+      ...feedKeys("bsky"),
+      {
+        Key: "local:bsky-hide-trending",
+        HumanName: "Hide Trending",
+        Values: ["true", "false"],
+      },
+    ],
+  },
   "substack.com": {
     Keys: [
       ...feedKeys("substack", ["explore", "up-next", "new-bestsellers"]),
