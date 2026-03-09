@@ -15,7 +15,8 @@ function fromStorage(
 ) {
   let unWatches = config.Keys.map(async (key) => {
     let value = await storage.getItem<string>(key.Key);
-    update(key.Key, value ?? key.possibleValues[key.DefaultValue]);
+    update(key.Key, value ?? key.Values[0]);
+    onUpdate?.(key.Key, value ?? key.Values[0]);
     return storage.watch<string>(key.Key, (v) => {
       const value = v ?? "true";
       onUpdate?.(key.Key, value);
@@ -32,7 +33,7 @@ function fromDefaults(
   onUpdate?: (key: string, value: string) => void
 ) {
   config.Keys.map((key) => {
-    const value = key.possibleValues[key.DefaultValue];
+    const value = key.Values[0];
     onUpdate?.(key.Key, value);
     update(key.Key, value);
   });
@@ -45,12 +46,13 @@ function update(key: string, value: string) {
 }
 
 export type ConfigurationKey = {
+  HumanName: string;
   Key: StorageItemKey;
-  possibleValues: string[];
-  DefaultValue: number; // index from the possible values
+  Values: string[];
 };
 
 export type PlatformConfiguration = {
+  HumanName: string;
   Keys: ConfigurationKey[];
 };
 
@@ -60,55 +62,65 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
       ...shortFormKeys("youtube"),
       ...feedKeys("youtube"),
       {
+        HumanName: "Hide End Screen",
         Key: "local:youtube-hide-end-screen",
-        DefaultValue: 0,
-        possibleValues: ["true", "false"],
+
+        Values: ["true", "false"],
       },
     ],
+    HumanName: "YouTube",
   },
   "www.linkedin.com": {
     Keys: [
       ...feedKeys("linkedin"),
       {
+        HumanName: "Hide Premium Upsells",
         Key: "local:linkedin-hide-premium-upsells",
-        DefaultValue: 0,
-        possibleValues: ["true", "false"],
+
+        Values: ["true", "false"],
       },
       {
+        HumanName: "Hide Add to Your Feed",
         Key: "local:linkedin-hide-add-to-your-feed",
-        DefaultValue: 0,
-        possibleValues: ["true", "false"],
+
+        Values: ["true", "false"],
       },
     ],
+    HumanName: "LinkedIn",
   },
-  "www.reddit.com": { Keys: feedKeys("reddit") },
+  "www.reddit.com": { Keys: feedKeys("reddit"), HumanName: "Reddit" },
   "www.tiktok.com": {
     Keys: [
       ...shortFormKeys("tiktok"),
       ...feedKeys("tiktok", ["explore", "live", "following", "search"]),
     ],
+    HumanName: "TikTok",
   },
   "www.facebook.com": {
     Keys: [
       ...feedKeys("facebook", ["games", "marketplace", "videos"]),
       ...shortFormKeys("facebook"),
     ],
+    HumanName: "Facebook",
   },
   "www.instagram.com": {
     Keys: [
       ...feedKeys("instagram", ["explore"]),
       ...shortFormKeys("instagram"),
     ],
+    HumanName: "Instagram",
   },
   "music.youtube.com": {
     Keys: [
       ...feedKeys("youtube_music", ["explore"]),
       {
+        HumanName: "Hide Related",
         Key: "local:youtube_music-hide-related",
-        DefaultValue: 0,
-        possibleValues: ["true", "false"],
+
+        Values: ["true", "false"],
       },
     ],
+    HumanName: "YouTube Music",
   },
 };
 
@@ -119,9 +131,10 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
 function shortFormKeys(platform: string): ConfigurationKey[] {
   return [
     {
+      HumanName: "Shortform",
       Key: `local:${platform}-shortform`,
-      DefaultValue: 0,
-      possibleValues: ["block", "show", "hide"],
+
+      Values: ["block", "show", "hide"],
     },
   ];
 }
@@ -131,15 +144,17 @@ function feedKeys(platform: string, feeds?: string[]): ConfigurationKey[] {
 
   return [
     {
+      HumanName: "Hide Home Feed",
       Key: `local:${platform}-hide-feed`,
-      DefaultValue: 0,
-      possibleValues: ["true", "false"],
+
+      Values: ["true", "false"],
     },
     ...feeds.map(
       (feed): ConfigurationKey => ({
+        HumanName: `Hide ${feed} Feed`,
         Key: `local:${platform}-hide-${feed}-feed`,
-        DefaultValue: 0,
-        possibleValues: ["true", "false"],
+
+        Values: ["true", "false"],
       })
     ),
   ];

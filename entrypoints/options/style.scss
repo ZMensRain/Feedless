@@ -1,0 +1,51 @@
+:root {
+  --background: #fff;
+  --color: #000;
+  --muted: #ccc;
+  font-size: 1rem;
+  padding: 0rem 1%;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000;
+    --color: #fff;
+    --muted: #666;
+  }
+}
+
+#app {
+  columns: 500px;
+}
+section {
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--muted);
+  padding: 1rem;
+  gap: 0.5rem;
+  h2 {
+    margin: 0.5rem 0;
+  }
+}
+
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.config-option {
+  display: flex;
+  align-content: center;
+  label {
+    flex: 1;
+    text-align: left;
+    text-transform: capitalize;
+  }
+}
+
+option {
+  text-transform: capitalize;
+}
