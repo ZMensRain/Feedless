@@ -135,7 +135,11 @@
       display: none;
     }
     [role="list"] {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
+      // display: none;
+      overflow: hidden;
+      max-height: 100px !important;
       outline: 1px solid red !important;
     }
   }
@@ -156,5 +160,10 @@
     h1 {
       display: none;
     }
+  }
+
+  // hides suggested boards
+  [role="group"]:has([href*="/board/create/cluster/"]) {
+    display: none;
   }
 }
