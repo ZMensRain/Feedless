@@ -124,7 +124,9 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
   },
   "pinterest.com": {
     HumanName: "Pinterest",
-    Keys: [...feedKeys("pinterest", ["explore", "search", "related-pins"])],
+    Keys: [
+      ...feedKeys("pinterest", ["explore", "search", "related-pins", "board"]),
+    ],
   },
 };
 

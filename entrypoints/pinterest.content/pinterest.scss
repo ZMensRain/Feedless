@@ -118,3 +118,43 @@
     visibility: hidden;
   }
 }
+
+:root[pinterest-hide-board-feed="true"] {
+  // hides the more ideas section card
+  .moreIdeasOnBoard {
+    display: none;
+  }
+  // hides the more ideas button
+  div[role="listitem"]:has([href*="/more-ideas/"]) {
+    display: none;
+  }
+
+  // hides the save some ideas to your new board feed
+  div:has([data-test-id="done-button"]) {
+    h1 {
+      display: none;
+    }
+    [role="list"] {
+      display: none;
+      outline: 1px solid red !important;
+    }
+  }
+
+  // hides the feed that the more ideas button or card would take you to
+  &[page-path*="/more-ideas/"] {
+    // hides the more ideas feed
+    [role="main"] {
+      max-height: 100vh !important;
+      overflow-y: hidden;
+    }
+
+    *:has(> [role="listitem"] [href*="/pin/"]) {
+      visibility: hidden;
+
+      overflow: hidden;
+    }
+    h1 {
+      display: none;
+    }
+  }
+}
