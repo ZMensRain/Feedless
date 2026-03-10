@@ -1,0 +1,101 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #121102;
+    --background: #fdfbed;
+    --primary: #e58a34;
+    --primary-foreground: var(--text);
+    --secondary: #8a9bf0;
+    --accent: #c84ae8;
+    --muted: #ccc;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fdfced;
+    --background: #030303;
+    --primary: #ffef7c;
+    --secondary: #303a74;
+    --accent: #5e04c5;
+    --primary-foreground: var(--background);
+    --muted: #666;
+  }
+}
+
+:root {
+  font-size: 1rem;
+  padding: 0rem 1%;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+#app {
+  columns: 500px;
+}
+section {
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--muted);
+  padding: 1rem;
+  gap: 0.5rem;
+  h2 {
+    margin: 0.5rem 0;
+  }
+}
+
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.config-option {
+  display: flex;
+  align-content: center;
+  label {
+    flex: 1;
+    text-align: left;
+    text-transform: capitalize;
+  }
+}
+
+option {
+  text-transform: capitalize;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--muted);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Add checkmark when checked */
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-foreground);
+  font-size: 14px;
+}
+
+/* Background when checked */
+input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+select {
+  padding: 0.25rem 1rem;
+  border: 2px solid var(--muted);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--color);
+  cursor: pointer;
+}
