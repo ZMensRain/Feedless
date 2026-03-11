@@ -122,6 +122,18 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     ],
     HumanName: "YouTube Music",
   },
+  "substack.com": {
+    Keys: [
+      ...feedKeys("substack", ["explore", "up-next", "new-bestsellers"]),
+      {
+        HumanName: "Hide Related",
+        Key: "local:substack-hide-related",
+
+        Values: ["true", "false"],
+      },
+    ],
+    HumanName: "Substack",
+  },
 };
 
 // -------------------------------------------------------------------------------------
