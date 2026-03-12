@@ -10,7 +10,8 @@
 :root[substack-hide-feed="true"][page-path="/"] {
   #reader-nav-page-scroll,
   [role="region"] {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -27,13 +28,13 @@
   }
 }
 
-:root[substack-hide-explore-feed="true"] {
-  [href*="/explore"] {
-    display: none;
+:root[substack-hide-explore-feed="true"][page-path*="/explore/"] {
+  div:has([href*="note"]):not(:has(input)) {
+    opacity: 0;
+    visibility: hidden;
   }
-  &[page-path="/explore/"] {
-    #reader-nav-page-scroll {
-      display: none;
-    }
+  div:has([href*="/search/"]):not(:has(input)) {
+    opacity: 0;
+    visibility: hidden;
   }
 }
