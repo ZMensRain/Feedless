@@ -1,16 +1,16 @@
 export default function AddNoScroll(
-  blocked: (key: string) => boolean,
+  isActive: (key: string) => boolean,
   keys: string[]
 ) {
   const preventScroll = (event: Event) => {
-    if (blocked(event.type)) return;
+    if (!isActive(event.type)) return;
 
     event.preventDefault();
     event.stopPropagation();
   };
 
   const removeCertainKeys = (event: KeyboardEvent) => {
-    if (blocked(event.key)) return;
+    if (!isActive(event.key)) return;
     if (!keys.includes(event.key)) return;
 
     event.preventDefault();

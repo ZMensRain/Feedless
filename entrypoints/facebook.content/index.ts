@@ -10,8 +10,7 @@ export default defineContentScript({
   runAt: "document_start",
   main(ctx) {
     AddNoScroll(
-      () => shortform === "show" || !document.URL.includes("reel"),
-
+      () => document.URL.includes("reel") && shortform !== "show",
       ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", " "]
     );
     Config(ConfigurationShape["www.facebook.com"], onUpdate);
