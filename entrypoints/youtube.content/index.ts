@@ -21,7 +21,7 @@ export default defineContentScript({
 });
 
 function onUpdate(key: string, value: string) {
-  if (key === "youtube-shortform") shortform = value;
+  if (key === "local:youtube-shortform") shortform = value;
 }
 
 function unfeeder() {

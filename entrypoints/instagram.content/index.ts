@@ -21,7 +21,7 @@ export default defineContentScript({
 });
 
 function onUpdate(key: string, value: string) {
-  if (key === "instagram-shortform") shortform = value;
+  if (key === "local:instagram-shortform") shortform = value;
 }
 
 function unfeeder() {
