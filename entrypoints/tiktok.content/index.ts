@@ -11,7 +11,10 @@ export default defineContentScript({
   main(ctx) {
     NewObserver(unfeeder, ctx);
     Config(ConfigurationShape["www.tiktok.com"], onUpdate);
-    AddNoScroll(() => true, ["ArrowDown", "ArrowUp", " "]);
+    AddNoScroll(
+      () => document.URL.includes("video") && shortform !== "show",
+      ["ArrowDown", "ArrowUp", " "]
+    );
     unfeeder();
   },
 });

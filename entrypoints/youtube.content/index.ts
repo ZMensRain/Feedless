@@ -13,7 +13,7 @@ export default defineContentScript({
     Config(ConfigurationShape["www.youtube.com"], onUpdate);
     NewObserver(unfeeder, ctx);
     AddNoScroll(
-      () => !document.URL.includes("shorts") && shortform === "show",
+      () => document.URL.includes("shorts") && shortform !== "show",
       ["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp", " "]
     );
     unfeeder();
