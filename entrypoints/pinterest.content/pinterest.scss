@@ -1,0 +1,169 @@
+:root[pinterest-hide-feed="true"][page-path="/"] {
+  [role="main"] {
+    max-height: 100vh !important;
+    overflow-y: hidden;
+  }
+
+  *:has(> [role="listitem"] [href*="/pin/"]) {
+    visibility: hidden;
+
+    overflow: hidden;
+  }
+
+  *:has(> #searchBoxContainer) {
+    background-color: transparent !important;
+  }
+
+  #searchBoxContainer {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+
+    margin-bottom: 10rem;
+
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: max(480px, 50vw);
+  }
+  #SuggestionsMenu {
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+:root[pinterest-hide-explore-feed="true"][page-path*="/ideas/"] {
+  [role="main"] {
+    max-height: 100vh !important;
+    overflow-y: hidden;
+  }
+
+  *:has(> [role="listitem"] [href*="/pin/"]) {
+    visibility: hidden;
+    overflow: hidden;
+  }
+
+  *:has(> #searchBoxContainer) {
+    background-color: transparent !important;
+  }
+
+  #searchBoxContainer {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+
+    margin-bottom: 10rem;
+
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: max(480px, 50vw);
+  }
+  [data-layout-shift-boundary-id="PageContainer"] {
+    visibility: hidden;
+  }
+  #SuggestionsMenu {
+    left: 0 !important;
+    right: 0 !important;
+  }
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+:root[pinterest-hide-search-feed="true"][page-path*="/search/"] {
+  [role="main"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 100px !important;
+    overflow-y: hidden;
+  }
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+:root[pinterest-hide-related-pins-feed="true"][page-path*="/pin/"] {
+  // hides related pins
+  [role="listitem"]:has([href*="/pin/"]) {
+    width: 1px !important;
+    height: 0px !important;
+    overflow: hidden;
+  }
+
+  // makes the currently viewed pin take the whole screen
+  [role="list"] {
+    height: fit-content !important;
+  }
+
+  // hides the discover related crap
+  [role="listitem"]:has([data-test-id="discover-bubble"]) {
+    display: none;
+  }
+  [role="listitem"]:has([data-test-id="closeup-action-bar"]) {
+    width: 100% !important;
+  }
+
+  // skeleton
+  [data-test-id*="skeleton"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+:root[pinterest-hide-board-feed="true"] {
+  // hides the more ideas section card
+  .moreIdeasOnBoard {
+    display: none;
+  }
+  // hides the more ideas button
+  div[role="listitem"]:has([href*="/more-ideas/"]) {
+    display: none;
+  }
+
+  // hides the save some ideas to your new board feed
+  div:has([data-test-id="done-button"]) {
+    h1 {
+      display: none;
+    }
+    [role="list"] {
+      opacity: 0;
+      visibility: hidden;
+      // display: none;
+      overflow: hidden;
+      max-height: 100px !important;
+      outline: 1px solid red !important;
+    }
+  }
+
+  // hides the feed that the more ideas button or card would take you to
+  &[page-path*="/more-ideas/"] {
+    // hides the more ideas feed
+    [role="main"] {
+      max-height: 100vh !important;
+      overflow-y: hidden;
+    }
+
+    *:has(> [role="listitem"] [href*="/pin/"]) {
+      visibility: hidden;
+
+      overflow: hidden;
+    }
+    h1 {
+      display: none;
+    }
+  }
+
+  // hides suggested boards
+  [role="group"]:has([href*="/board/create/cluster/"]) {
+    display: none;
+  }
+}
