@@ -1,0 +1,52 @@
+// has one issue does not fully hide the feed so you can still scroll in it but not see it
+// this is due to that fact that if it has display:none; it infinitely loads more content
+:root[substack-hide-related="true"][page-path*="/note/"] {
+  div:has(> [class*="feedItem"][role="article"]) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+:root[substack-hide-feed="true"][page-path="/"] {
+  #reader-nav-page-scroll,
+  [role="region"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+:root[substack-hide-new-bestsellers-feed="true"] {
+  *:has([href*="leaderboard/bestseller"]):has(> * >[data-href="https://substack.com/leaderboard/bestseller/rising"])
+  {
+    display: none;
+  }
+
+  // hides the bestseller page
+  &[page-path*="bestseller"] {
+    // hides tabs
+    [role="tablist"] {
+      display: none;
+    }
+    // hides content
+    #reader-nav-page-scroll {
+      display: none;
+    }
+  }
+}
+
+:root[substack-hide-up-next-feed="true"]:not([page-path*="inbox"]) {
+  div:has([href*="post"]):has(> * > [href*="/inbox"]) {
+    display: none;
+  }
+}
+
+:root[substack-hide-explore-feed="true"][page-path*="/explore/"] {
+  div:has([href*="note"]):not(:has(input)) {
+    opacity: 0;
+    visibility: hidden;
+  }
+  div:has([href*="/search/"]):not(:has(input)) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

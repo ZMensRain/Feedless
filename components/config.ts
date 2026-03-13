@@ -128,6 +128,29 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
       ...feedKeys("pinterest", ["explore", "search", "related-pins", "board"]),
     ],
   },
+  "bsky.app": {
+    HumanName: "Bluesky",
+    Keys: [
+      ...feedKeys("bsky"),
+      {
+        Key: "local:bsky-hide-trending",
+        HumanName: "Hide Trending",
+        Values: ["true", "false"],
+      },
+    ],
+  },
+  "substack.com": {
+    Keys: [
+      ...feedKeys("substack", ["explore", "up-next", "new-bestsellers"]),
+      {
+        HumanName: "Hide Related",
+        Key: "local:substack-hide-related",
+
+        Values: ["true", "false"],
+      },
+    ],
+    HumanName: "Substack",
+  },
 };
 
 // -------------------------------------------------------------------------------------
