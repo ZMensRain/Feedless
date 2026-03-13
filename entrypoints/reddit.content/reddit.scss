@@ -1,0 +1,13 @@
+/* feed*/
+
+:root[reddit-hide-feed="true"][page-path="/"] {
+  .subgrid-container {
+    display: none;
+  }
+}
+
+:root[reddit-hide-explore-feed="true"][page-path="/explore/"] {
+  .subgrid-container {
+    display: none;
+  }
+}
