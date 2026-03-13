@@ -27,13 +27,13 @@ In cases such as Pinterest where the search results are a feed themselves a spec
 
 - [x] YouTube
 - [x] LinkedIn
-- [ ] Reddit
+- [x] Reddit
 - [x] TikTok
 - [x] Pinterest
-- [ ] SubStack
-- [ ] Twitter/X
+- [x] SubStack
+- [x] Twitter/X
 - [x] Facebook
-- [ ] BlueSky
+- [x] BlueSky
 - [x] Instagram
 - [ ] Amazon
 - [x] YouTube music
