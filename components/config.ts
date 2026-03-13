@@ -154,6 +154,23 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     ],
     HumanName: "Substack",
   },
+  "www.twitter.com": {
+    Keys: [
+      ...feedKeys("twitter", [
+        "trending",
+        "who-to-follow",
+        "whats-new",
+        "explore",
+      ]),
+      {
+        HumanName: "Hide Premium",
+        Key: "local:twitter-hide-premium",
+
+        Values: ["true", "false"],
+      },
+    ],
+    HumanName: "Twitter/X",
+  },
 };
 
 // -------------------------------------------------------------------------------------

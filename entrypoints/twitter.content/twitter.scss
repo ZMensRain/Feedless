@@ -1,0 +1,81 @@
+//hides the "What's new" feed on the right sidebar
+:root[twitter-hide-whats-new-feed="true"] {
+  *:has([data-testid*="news_sidebar_article"]):not(:has(input)) {
+    display: none;
+  }
+}
+
+:root[twitter-hide-premium="true"] {
+  // hides the "Premium" aside on the right sidebar
+  div:has(> aside [href="/i/premium_sign_up"]) {
+    display: none;
+  }
+  // hides the "Premium" button on the left sidebar
+  [href="/i/premium_sign_up"] {
+    display: none;
+  }
+}
+
+// trending section
+:root[twitter-hide-trending-feed="true"] {
+  &[page-path="/home/"] {
+    div:has(> section [data-testid="trend"]) {
+      display: none;
+    }
+  }
+  [data-testid="trend"] {
+    display: none;
+  }
+
+  &[page-path*="trending"] {
+    [data-testid="primaryColumn"] {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+// who to follow section
+:root[twitter-hide-who-to-follow-feed="true"] {
+  // right sidebar
+  div:has(> aside [data-testid="UserCell"]) {
+    display: none;
+  }
+
+  // left sidebar
+  [href="/i/connect_people"] {
+    display: none;
+  }
+
+  // page
+  &[page-path="/i/connect_people/"] {
+    [data-testid="primaryColumn"] {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  // explore page
+  &[page-path="/explore/"] {
+    [data-testid="UserCell"] {
+      display: none;
+    }
+  }
+}
+
+:root[twitter-hide-feed="true"][page-path="/home/"] {
+  [data-testid="primaryColumn"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+:root[twitter-hide-explore-feed="true"][page-path="/explore/"] {
+  nav:has([href*="/explore/tabs/"]) {
+    display: none;
+  }
+  [data-testid="cellInnerDiv"] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
