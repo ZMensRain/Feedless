@@ -1,6 +1,6 @@
 {
-  "name": "wxt-starter",
-  "description": "manifest.json description",
+  "name": "feedless",
+  "description": "A browser extension for removing the feeds on various platforms",
   "private": true,
   "version": "0.0.0",
   "type": "module",
