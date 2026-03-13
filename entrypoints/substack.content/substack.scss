@@ -22,7 +22,7 @@
   }
 }
 
-:root[substack-hide-up-next-feed="true"] {
+:root[substack-hide-up-next-feed="true"]:not([page-path*="inbox"]) {
   div:has([href*="post"]):has(> * > [href*="/inbox"]) {
     display: none;
   }
