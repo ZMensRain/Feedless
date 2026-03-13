@@ -1,0 +1,17 @@
+// hides feed on home screen
+:root[bsky-hide-feed="true"] {
+  &[page-path="/"] {
+    main {
+      display: none;
+      // outline: 1px solid red !important;
+    }
+  }
+  a[href="/feeds"] {
+    display: none !important;
+  }
+}
+
+:root[bsky-hide-trending="true"] [href*="trending"] {
+  outline: 1px solid red;
+  display: none;
+}
