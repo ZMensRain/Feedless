@@ -20,6 +20,18 @@
   {
     display: none;
   }
+
+  // hides the bestseller page
+  &[page-path*="bestseller"] {
+    // hides tabs
+    [role="tablist"] {
+      display: none;
+    }
+    // hides content
+    #reader-nav-page-scroll {
+      display: none;
+    }
+  }
 }
 
 :root[substack-hide-up-next-feed="true"]:not([page-path*="inbox"]) {
