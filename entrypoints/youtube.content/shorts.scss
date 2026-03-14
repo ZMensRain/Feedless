@@ -14,8 +14,8 @@
     display: none;
   }
 
-  // 
-  ytd-mini-guide-entry-renderer:has([href*="/shorts/"]){
+  //
+  ytd-mini-guide-entry-renderer:has([href*="/shorts/"]) {
     display: none;
   }
 
@@ -46,6 +46,19 @@
   }
   .reel-video-in-sequence-new[id="0"] {
     display: block;
+  }
+
+  // hide the feed for shorts with this sound
+  &[page-path*="short"] {
+    ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-shorts-audio-pivot"]
+      #contents {
+      display: none;
+    }
+  }
+
+  yt-shorts-suggested-action-view-model,
+  yt-reel-multi-format-link-view-model {
+    display: none;
   }
 }
 
