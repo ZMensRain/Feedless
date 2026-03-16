@@ -1,23 +1,24 @@
 @use "./shorts.scss";
 
-/* Sidebar */
-ytd-guide-section-renderer:has(a[href*="/premium"]), // hides the more from youtube section from the sidebar
+:root[youtube-hide-up-next-feed="true"] {
+  /* Sidebar */
+  ytd-guide-section-renderer:has(a[href*="/premium"]), // hides the more from youtube section from the sidebar
 ytd-guide-section-renderer:has(a[href*="/channel"]), // hides explore section
 ytd-guide-signin-promo-renderer {
-  display: none;
-}
+    display: none;
+  }
 
-// hides recommended section while still allowing playlists to be shown
-// also makes sure that video is centered
-#secondary:has(ytd-playlist-panel-renderer[hidden]) {
-  display: none;
-}
+  // hides recommended section while still allowing playlists to be shown
+  // also makes sure that video is centered
+  #secondary:has(ytd-playlist-panel-renderer[hidden]) {
+    display: none;
+  }
 
-/* hides the recommend when there is a playlist */
-#related {
-  display: none;
+  /* hides the recommend when there is a playlist */
+  #related {
+    display: none;
+  }
 }
-
 // on homepage
 :root[page-path="/"][youtube-hide-feed="true"] {
   // hiding the feed
