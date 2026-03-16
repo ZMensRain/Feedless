@@ -18,6 +18,9 @@ ytd-guide-signin-promo-renderer {
   #related {
     display: none;
   }
+  body {
+    overflow-x: hidden;
+  }
 }
 // on homepage
 :root[page-path="/"][youtube-hide-feed="true"] {
