@@ -143,7 +143,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
   "bsky.app": {
     HumanName: "Bluesky",
     Keys: [
-      ...feedKeys("bsky"),
+      ...feedKeys("bsky", ["explore"]),
       {
         Key: "local:bsky-hide-trending",
         HumanName: "Hide Trending",
