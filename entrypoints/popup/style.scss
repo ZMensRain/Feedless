@@ -85,13 +85,58 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --text: #121102;
+    --background: #fdfbed;
+    --primary: #e58a34;
+    --primary-foreground: var(--text);
+    --secondary: #8a9bf0;
+    --accent: #c84ae8;
+    --muted: #ccc;
   }
-  a:hover {
-    color: #747bff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fdfced;
+    --background: #030303;
+    --primary: #ffef7c;
+    --secondary: #303a74;
+    --accent: #5e04c5;
+    --primary-foreground: var(--background);
+    --muted: #666;
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+:root {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+a:hover {
+  color: var(--primary);
+  scale: 1.1;
+  transition: 200ms;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.links > * {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
