@@ -22,6 +22,15 @@ ytd-guide-signin-promo-renderer {
     overflow-x: hidden;
   }
 }
+
+:root[youtube-hide-subscription-feed="true"] {
+  ytd-mini-guide-entry-renderer:has([href="/feed/subscriptions"]),
+  ytd-guide-entry-renderer:has([href="/feed/subscriptions"]) {
+    display: none;
+  }
+}
+
+:root[youtube-hide-subscription-feed="true"][page-path="/feed/subscriptions/"],
 // on homepage
 :root[page-path="/"][youtube-hide-feed="true"] {
   // hiding the feed

@@ -60,7 +60,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
   "www.youtube.com": {
     Keys: [
       ...shortFormKeys("youtube"),
-      ...feedKeys("youtube", ["up-next"]),
+      ...feedKeys("youtube", ["up-next", "subscription"]),
       {
         HumanName: "Hide End Screen",
         Key: "local:youtube-hide-end-screen",
