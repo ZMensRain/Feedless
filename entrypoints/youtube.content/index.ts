@@ -40,4 +40,12 @@ function unfeeder() {
     menuButton.setAttribute("feedless-pressed", "true");
     menuButton.click();
   }
+
+  if (shortform !== "show" && document.URL.includes("results")) {
+    document.querySelectorAll("yt-chip-cloud-chip-renderer").forEach((e) => {
+      if (e.innerHTML.includes("Shorts")) {
+        e.remove();
+      }
+    });
+  }
 }

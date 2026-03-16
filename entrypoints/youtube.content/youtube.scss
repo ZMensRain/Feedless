@@ -1,23 +1,36 @@
 @use "./shorts.scss";
 
-/* Sidebar */
-ytd-guide-section-renderer:has(a[href*="/premium"]), // hides the more from youtube section from the sidebar
+:root[youtube-hide-up-next-feed="true"] {
+  /* Sidebar */
+  ytd-guide-section-renderer:has(a[href*="/premium"]), // hides the more from youtube section from the sidebar
 ytd-guide-section-renderer:has(a[href*="/channel"]), // hides explore section
 ytd-guide-signin-promo-renderer {
-  display: none;
+    display: none;
+  }
+
+  // hides recommended section while still allowing playlists to be shown
+  // also makes sure that video is centered
+  #secondary:has(ytd-playlist-panel-renderer[hidden]) {
+    display: none;
+  }
+
+  /* hides the recommend when there is a playlist */
+  #related {
+    display: none;
+  }
+  body {
+    overflow-x: hidden;
+  }
 }
 
-// hides recommended section while still allowing playlists to be shown
-// also makes sure that video is centered
-#secondary:has(ytd-playlist-panel-renderer[hidden]) {
-  display: none;
+:root[youtube-hide-subscription-feed="true"] {
+  ytd-mini-guide-entry-renderer:has([href="/feed/subscriptions"]),
+  ytd-guide-entry-renderer:has([href="/feed/subscriptions"]) {
+    display: none;
+  }
 }
 
-/* hides the recommend when there is a playlist */
-#related {
-  display: none;
-}
-
+:root[youtube-hide-subscription-feed="true"][page-path="/feed/subscriptions/"],
 // on homepage
 :root[page-path="/"][youtube-hide-feed="true"] {
   // hiding the feed
@@ -85,4 +98,3 @@ ytd-guide-signin-promo-renderer {
     display: none !important;
   }
 }
-
