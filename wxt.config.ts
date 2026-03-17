@@ -1,6 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import { defineConfig, WxtViteConfig } from "wxt";
+import { defineConfig, WxtViteConfig, UserConfig } from "wxt";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -11,6 +11,13 @@ export default defineConfig({
   },
   manifest: {
     name: "Feedless",
+    browser_specific_settings: {
+      gecko: {
+        data_collection_permissions: {
+          required: ["none"],
+        },
+      },
+    },
     permissions: ["storage"],
   },
   vite: () =>
@@ -22,4 +29,4 @@ export default defineConfig({
         },
       },
     } as WxtViteConfig),
-});
+} as UserConfig);
