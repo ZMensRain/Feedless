@@ -38,3 +38,10 @@ In cases such as Pinterest where the search results are a feed themselves a spec
 - [ ] Amazon
 - [x] YouTube music
 - [ ] Spotify
+
+# Building
+
+```sh
+pnpm i
+pnpm zip:firefox
+```
