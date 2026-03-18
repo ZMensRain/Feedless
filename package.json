@@ -15,8 +15,12 @@
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
+    "@wxt-dev/module-solid": "^1.1.4",
     "sass-embedded": "^1.97.3",
     "typescript": "^5.9.3",
     "wxt": "^0.20.17"
+  },
+  "dependencies": {
+    "solid-js": "^1.9.11"
   }
 }
