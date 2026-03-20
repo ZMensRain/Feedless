@@ -62,10 +62,19 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
       ...shortFormKeys("youtube"),
       ...feedKeys("youtube", ["up-next", "subscription"]),
       {
-        HumanName: "Hide End Screen",
-        Key: "local:youtube-hide-end-screen",
-
+        HumanName: "Hide More From Youtube",
+        Key: "local:youtube-hide-more-from-youtube",
         Values: ["true", "false"],
+      },
+      {
+        HumanName: "Hide Explore Sidebar Section",
+        Key: "local:youtube-hide-explore",
+        Values: ["true", "false"],
+      },
+      {
+        HumanName: "Hide You Sidebar Section",
+        Key: "local:youtube-hide-you-section",
+        Values: ["false", "true"],
       },
     ],
     HumanName: "YouTube",

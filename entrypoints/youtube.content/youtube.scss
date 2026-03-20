@@ -1,13 +1,27 @@
 @use "./shorts.scss";
 
-:root[youtube-hide-up-next-feed="true"] {
-  /* Sidebar */
-  ytd-guide-section-renderer:has(a[href*="/premium"]), // hides the more from youtube section from the sidebar
-ytd-guide-section-renderer:has(a[href*="/channel"]), // hides explore section
-ytd-guide-signin-promo-renderer {
+// hides the more from youtube section that contains premium, music, and youtube kids
+:root[youtube-hide-more-from-youtube="true"] {
+  ytd-guide-section-renderer:has(a[href*="/premium"]) {
     display: none;
   }
+}
 
+// hides the explore section in the sidebar
+:root[youtube-hide-explore="true"] {
+  ytd-guide-section-renderer:has(a[href*="/gaming"]) {
+    display: none;
+  }
+}
+
+// hides the you section with history, watch later, liked videos, and so on
+:root[youtube-hide-you-section="true"] {
+  ytd-guide-section-renderer:has([href="/feed/history"]) {
+    display: none;
+  }
+}
+
+:root[youtube-hide-up-next-feed="true"] {
   // hides recommended section while still allowing playlists to be shown
   // also makes sure that video is centered
   #secondary:has(ytd-playlist-panel-renderer[hidden]) {
@@ -28,10 +42,14 @@ ytd-guide-signin-promo-renderer {
   ytd-guide-entry-renderer:has([href="/feed/subscriptions"]) {
     display: none;
   }
+
+  // hides the channels you are subscribed too in the sidebar
+  ytd-guide-section-renderer:has([href*="@"]) {
+    display: none;
+  }
 }
 
 :root[youtube-hide-subscription-feed="true"][page-path="/feed/subscriptions/"],
-// on homepage
 :root[page-path="/"][youtube-hide-feed="true"] {
   // hiding the feed
   ytd-rich-grid-renderer {
