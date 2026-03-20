@@ -8,14 +8,11 @@ const App: Component = () => {
     boolean | undefined
   >(undefined);
 
-  const [password] = createResource(async () => {
-    // return "password";
-    //TODO
-    return storage.getItem<string>("local:password");
-  });
+  const [password] = createResource(async () =>
+    storage.getItem<string>("local:password")
+  );
 
   function handlePassword(p: string) {
-    console.log("aaah");
     if (p != password()) setEnteredCorrectPassword(false);
     else setEnteredCorrectPassword(true);
   }

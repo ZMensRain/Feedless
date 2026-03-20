@@ -1,4 +1,6 @@
 export default function ConfigPage() {
+  let dialog!: HTMLDialogElement;
+
   function handleSubmit(e?: Event) {
     e?.preventDefault();
 
@@ -38,6 +40,13 @@ export default function ConfigPage() {
               <button class="bg-primary text-primary-foreground p-4 pt-2 pb-2 rounded-xl">
                 Set or Update
               </button>
+              <button
+                class="bg-primary text-primary-foreground p-4 pt-2 pb-2 rounded-xl"
+                type="button"
+                onClick={() => dialog.showModal()}
+              >
+                Remove
+              </button>
             </div>
           </div>
         </form>
@@ -51,6 +60,32 @@ export default function ConfigPage() {
         <footer class="border-t pt-4 mt-4">
           <p>Thank You HeroRareheart for the original logo design</p>
         </footer>
+
+        <dialog
+          id="confirmation"
+          closedby="any"
+          ref={dialog}
+          class="m-auto bg-surface text-text p-4 rounded-2xl"
+        >
+          <p>Are you sure you want to remove the password</p>
+          <div class="flex flex-row gap-4 justify-center mt-4">
+            <button
+              class="border  p-4 pt-2 pb-2 rounded-xl"
+              onClick={() => dialog.close()}
+            >
+              No
+            </button>
+            <button
+              class="bg-primary text-primary-foreground p-4 pt-2 pb-2 rounded-xl"
+              onClick={() => {
+                storage.removeItem("local:password");
+                dialog.close();
+              }}
+            >
+              Yes
+            </button>
+          </div>
+        </dialog>
       </main>
     </>
   );
