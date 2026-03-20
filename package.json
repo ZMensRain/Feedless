@@ -15,6 +15,7 @@
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
+    "@wxt-dev/auto-icons": "^1.1.1",
     "@wxt-dev/module-solid": "^1.1.4",
     "sass-embedded": "^1.97.3",
     "typescript": "^5.9.3",
