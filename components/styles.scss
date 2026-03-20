@@ -1,0 +1,71 @@
+:root {
+  /* Cararra */
+  --cararra-10: rgb(227 227 222);
+  --cararra-20: rgb(182 182 177);
+  --cararra-30: rgb(140 140 134);
+  --cararra-40: rgb(99 99 95);
+  --cararra-50: rgb(62 62 58);
+  --cararra-60: rgb(28 28 25);
+  --cararra-source: rgb(240 240 234);
+
+  /* Little Boy Blue */
+  --little-boy-blue-10: rgb(195 228 255);
+  --little-boy-blue-20: rgb(144 184 240);
+  --little-boy-blue-30: rgb(96 142 199);
+  --little-boy-blue-40: rgb(52 102 154);
+  --little-boy-blue-50: rgb(11 64 106);
+  --little-boy-blue-60: rgb(0 29 53);
+  --little-boy-blue-source: rgb(113 159 218);
+
+  /* Marshland */
+  --marshland-10: rgb(227 227 221);
+  --marshland-20: rgb(182 182 176);
+  --marshland-30: rgb(140 140 133);
+  --marshland-40: rgb(99 100 94);
+  --marshland-50: rgb(62 62 57);
+  --marshland-60: rgb(28 28 25);
+  --marshland-source: rgb(12 12 3);
+
+  /* Mona Lisa */
+  --mona-lisa-10: rgb(255 205 196);
+  --mona-lisa-20: rgb(249 158 149);
+  --mona-lisa-30: rgb(205 114 106);
+  --mona-lisa-40: rgb(157 74 69);
+  --mona-lisa-50: rgb(107 40 37);
+  --mona-lisa-60: rgb(54 14 10);
+  --mona-lisa-source: rgb(242 145 136);
+
+  /* River Bed */
+  --river-bed-10: rgb(218 227 245);
+  --river-bed-20: rgb(173 182 202);
+  --river-bed-30: rgb(130 140 160);
+  --river-bed-40: rgb(90 100 118);
+  --river-bed-50: rgb(54 62 77);
+  --river-bed-60: rgb(23 28 36);
+  --river-bed-source: rgb(65 75 93);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: var(--marshland-source);
+    --background: var(--cararra-source);
+    --primary: var(--mona-lisa-source);
+    --primary-foreground: var(--text);
+    --secondary: var(--river-bed-source);
+    --surface: var(--cararra-10);
+    --accent: var(--little-boy-blue-source);
+    --muted: var(--marshland-50);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: var(--cararra-source);
+    --background: var(--marshland-source);
+    --primary: var(--mona-lisa-source);
+    --primary-foreground: var(--text);
+    --secondary: var(--river-bed-source);
+    --surface: var(--marshland-60);
+    --accent: var(--little-boy-blue-source);
+    --muted: var(--cararra-10);
+  }
+}

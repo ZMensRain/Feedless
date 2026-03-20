@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #f29188;
+  --color-primary-foreground: var(--color-text);
+  --color-accent: #719fda;
+  --color-text: #0c0c03;
+  --color-background: #f0f0ea;
+  --color-secondary: #414b5d;
+  --color-surface: #e6e6e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #020202;
+    --color-primary-foreground: var(--color-background);
+    --color-text: #f0f0ea;
+    --color-secondary: #414b5d;
+    --color-surface: #1a1a18;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text;
+  }
+}

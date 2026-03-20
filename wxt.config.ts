@@ -1,4 +1,6 @@
-import { defineConfig } from "wxt";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+import { defineConfig, WxtViteConfig } from "wxt";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -7,4 +9,13 @@ export default defineConfig({
     name: "Feedless",
     permissions: ["storage"],
   },
+  vite: () =>
+    ({
+      plugins: [tailwindcss()],
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "./"),
+        },
+      },
+    } as WxtViteConfig),
 });

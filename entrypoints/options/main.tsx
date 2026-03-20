@@ -1,29 +1,39 @@
 import { Component } from "solid-js";
+import "../../assets/tailwind.css";
+import ConfigPage from "./pages/config";
+import PasswordPage from "./pages/password";
 
 const App: Component = () => {
+  const [enteredCorrectPassword, setEnteredCorrectPassword] = createSignal<
+    boolean | undefined
+  >(undefined);
+
+  const [password] = createResource(async () => {
+    // return "password";
+    //TODO
+    return storage.getItem<string>("local:password");
+  });
+
+  function handlePassword(p: string) {
+    console.log("aaah");
+    if (p != password()) setEnteredCorrectPassword(false);
+    else setEnteredCorrectPassword(true);
+  }
+
   return (
-    <>
-      <main>
-        <h1>Feedless Options</h1>
-        <p>
-          A quick explanation of shortform options, they can be set to block,
-          show, or hide. Block prevents you from seeing the shortform content at
-          all. Show does nothing to the shortform content. Hide hides the
-          shortform content from the UI but still allows you to watch shortform
-          videos if you have a link and disables scrolling.
-        </p>
-        <div id="configuration-sections">
-          <For each={Object.keys(ConfigurationShape)}>
-            {(key) => (
-              <ConfigSection key={key} config={ConfigurationShape[key]} />
-            )}
-          </For>
-        </div>
-      </main>
-      <footer>
-        <p>Thank You HeroRareheart for the original logo design</p>
-      </footer>
-    </>
+    <Show when={!password.loading} fallback={<div>Not Found</div>}>
+      <Switch>
+        <Match when={password.latest == null || enteredCorrectPassword()}>
+          <ConfigPage />
+        </Match>
+        <Match when={password.latest !== null}>
+          <PasswordPage
+            onPasswordEntered={handlePassword}
+            correct={enteredCorrectPassword()}
+          />
+        </Match>
+      </Switch>
+    </Show>
   );
 };
 
