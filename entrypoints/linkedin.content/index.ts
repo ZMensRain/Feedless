@@ -1,6 +1,6 @@
-import NewObserver from "@/components/observer";
+import NewObserver from "@/utils/NewObserver";
 import "./linkedin.scss";
-import Config from "@/components/config";
+import Config from "@/utils/Config";
 
 export default defineContentScript({
   matches: ["*://*.linkedin.com/*"],

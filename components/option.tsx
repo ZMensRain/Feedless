@@ -1,4 +1,4 @@
-import { ConfigurationKey } from "./config";
+import { ConfigurationKey } from "../utils/Config";
 
 type Props = {} & ConfigurationKey;
 

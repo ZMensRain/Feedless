@@ -1,6 +1,6 @@
-import Config from "@/components/config";
+import Config from "@/utils/Config";
 import "./twitter.scss";
-import NewObserver from "@/components/observer";
+import NewObserver from "@/utils/NewObserver";
 
 export default defineContentScript({
   matches: ["*://*.twitter.com/*", "*://*.x.com/*"],

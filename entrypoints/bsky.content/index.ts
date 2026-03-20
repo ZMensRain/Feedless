@@ -1,5 +1,5 @@
-import NewObserver from "@/components/observer";
-import Config from "@/components/config";
+import NewObserver from "@/utils/NewObserver";
+import Config from "@/utils/Config";
 import "./bsky.scss";
 
 export default defineContentScript({

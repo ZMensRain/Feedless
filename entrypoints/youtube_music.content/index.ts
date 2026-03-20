@@ -1,8 +1,8 @@
 import "./youtube_music.scss";
-import NewObserver from "@/components/observer";
-import Config, { ConfigurationShape } from "@/components/config";
-import AddPath from "@/utils/addPath";
-import AddNoScroll from "@/components/noShortScroll";
+import NewObserver from "@/utils/NewObserver";
+import Config, { ConfigurationShape } from "@/utils/Config";
+import AddPath from "@/utils/AddPath";
+import AddNoScroll from "@/utils/AddNoScroll";
 
 export default defineContentScript({
   matches: ["*://music.youtube.com/*"],
