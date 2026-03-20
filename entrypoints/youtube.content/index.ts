@@ -1,8 +1,4 @@
-import NewObserver from "@/utils/NewObserver";
 import "./youtube.scss";
-import Config, { ConfigurationShape } from "@/utils/Config";
-import AddPath from "@/utils/AddPath";
-import AddNoScroll from "@/utils/AddNoScroll";
 
 let shortform = "show";
 

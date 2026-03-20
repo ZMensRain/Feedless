@@ -1,5 +1,3 @@
-import NewObserver from "@/utils/NewObserver";
-import Config from "@/utils/Config";
 import "./bsky.scss";
 
 export default defineContentScript({
@@ -13,5 +11,5 @@ export default defineContentScript({
 });
 
 function unfeeder() {
-  addPath();
+  AddPath();
 }

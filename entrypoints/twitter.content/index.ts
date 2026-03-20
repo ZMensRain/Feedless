@@ -1,6 +1,4 @@
-import Config from "@/utils/Config";
 import "./twitter.scss";
-import NewObserver from "@/utils/NewObserver";
 
 export default defineContentScript({
   matches: ["*://*.twitter.com/*", "*://*.x.com/*"],
@@ -13,5 +11,5 @@ export default defineContentScript({
 });
 
 function unfeeder() {
-  addPath();
+  AddPath();
 }

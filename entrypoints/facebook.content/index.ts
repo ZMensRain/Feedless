@@ -1,7 +1,4 @@
-import NewObserver from "@/utils/NewObserver";
-import Config from "@/utils/Config";
 import "./facebook.scss";
-import AddNoScroll from "@/utils/AddNoScroll";
 
 let shortform = "show";
 
@@ -25,5 +22,5 @@ function onUpdate(key: string, value: string) {
 }
 
 function unfeeder() {
-  addPath();
+  AddPath();
 }

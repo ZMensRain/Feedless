@@ -1,7 +1,4 @@
-import NewObserver from "@/utils/NewObserver";
 import "./substack.scss";
-import Config from "@/utils/Config";
-import AddPath from "@/utils/AddPath";
 
 export default defineContentScript({
   matches: ["*://substack.com/*"],

@@ -1,7 +1,4 @@
-import NewObserver from "@/utils/NewObserver";
 import "./pinterest.scss";
-import Config, { ConfigurationShape } from "@/utils/Config";
-import AddPath from "@/utils/AddPath";
 
 export default defineContentScript({
   matches: ["*://*.pinterest.com/*"],

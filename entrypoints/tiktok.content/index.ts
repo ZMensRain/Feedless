@@ -1,7 +1,4 @@
-import NewObserver from "@/utils/NewObserver";
-import Config from "@/utils/Config";
 import "./tiktok.scss";
-import AddNoScroll from "@/utils/AddNoScroll";
 
 let shortform = "block";
 
@@ -24,8 +21,5 @@ function onUpdate(key: string, value: string) {
 }
 
 function unfeeder() {
-  addPath();
-  // nukes shorts
-  // let body = document.querySelector("body");
-  // if (body != undefined) body.innerHTML = "";
+  AddPath();
 }
