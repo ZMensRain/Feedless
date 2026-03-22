@@ -16,7 +16,10 @@
 
   article[id^="one-column"]:not([id*="-0"]) {
     display: none;
-    outline: 1px solid red;
+  }
+
+  #music-item-list {
+    display: none !important;
   }
 }
 // "live", "following"

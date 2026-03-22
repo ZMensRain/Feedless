@@ -1,8 +1,4 @@
-import NewObserver from "@/components/observer";
-import Config from "@/components/config";
 import "./instagram.scss";
-import AddNoScroll from "@/components/noShortScroll";
-import AddPath from "@/utils/addPath";
 
 let shortform = "show";
 

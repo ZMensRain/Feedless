@@ -98,7 +98,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     HumanName: "LinkedIn",
   },
   "www.reddit.com": {
-    Keys: feedKeys("reddit", ["explore"]),
+    Keys: feedKeys("reddit", ["explore", "related-posts"]),
     HumanName: "Reddit",
   },
   "www.tiktok.com": {
@@ -143,7 +143,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
   "bsky.app": {
     HumanName: "Bluesky",
     Keys: [
-      ...feedKeys("bsky"),
+      ...feedKeys("bsky", ["explore"]),
       {
         Key: "local:bsky-hide-trending",
         HumanName: "Hide Trending",

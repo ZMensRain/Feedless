@@ -3,7 +3,6 @@
   &[page-path="/"] {
     main {
       display: none;
-      // outline: 1px solid red !important;
     }
   }
   a[href="/feeds"] {
@@ -12,6 +11,11 @@
 }
 
 :root[bsky-hide-trending="true"] [href*="trending"] {
-  outline: 1px solid red;
   display: none;
+}
+
+:root[bsky-hide-explore-feed][page-path="/search/"]:not([page-params*="q="]) {
+  div:has([href*="profile"]):not(:has(nav, input)) {
+    display: none;
+  }
 }

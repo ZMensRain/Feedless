@@ -11,3 +11,9 @@
     display: none;
   }
 }
+
+:root[reddit-hide-related-posts-feed="true"] {
+  pdp-right-rail {
+    display: none;
+  }
+}

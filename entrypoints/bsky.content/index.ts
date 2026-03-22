@@ -1,6 +1,5 @@
-import NewObserver from "@/components/observer";
-import Config from "@/components/config";
 import "./bsky.scss";
+import AddParams from "@/utils/addParams";
 
 export default defineContentScript({
   matches: ["*://bsky.app/*"],
@@ -13,5 +12,6 @@ export default defineContentScript({
 });
 
 function unfeeder() {
-  addPath();
+  AddPath();
+  AddParams();
 }
