@@ -24,7 +24,7 @@
     display: none !important;
   }
 
-  ytd-rich-section-renderer,
+  ytd-rich-section-renderer:has([href*="shorts"]):not(:has([href*=watch])), // hides the section on the subscription and home pages
   ytd-reel-shelf-renderer {
     display: none !important;
   }
@@ -58,6 +58,10 @@
 
   yt-shorts-suggested-action-view-model,
   yt-reel-multi-format-link-view-model {
+    display: none;
+  }
+
+  ytd-rich-item-renderer:has([href*="short"]) {
     display: none;
   }
 }
