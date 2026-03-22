@@ -98,7 +98,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     HumanName: "LinkedIn",
   },
   "www.reddit.com": {
-    Keys: feedKeys("reddit", ["explore"]),
+    Keys: feedKeys("reddit", ["explore", "related-posts"]),
     HumanName: "Reddit",
   },
   "www.tiktok.com": {
