@@ -76,6 +76,11 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
         Key: "local:youtube-hide-you-section",
         Values: ["false", "true"],
       },
+      {
+        HumanName: "Hide End Screen bits",
+        Key: "local:youtube-hide-end-screen",
+        Values: ["true", "false"],
+      },
     ],
     HumanName: "YouTube",
   },
