@@ -35,6 +35,9 @@
   body {
     overflow-x: hidden;
   }
+  button.ytp-autonav-toggle {
+    display: none;
+  }
 }
 
 :root[youtube-hide-subscription-feed="true"] {

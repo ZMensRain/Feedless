@@ -1,6 +1,7 @@
 import "./youtube.scss";
 
 let shortform = "show";
+let hideNextFeed = "true";
 
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
@@ -18,6 +19,7 @@ export default defineContentScript({
 
 function onUpdate(key: string, value: string) {
   if (key === "local:youtube-shortform") shortform = value;
+  if (key === "local:youtube-hide-up-next-feed") hideNextFeed = value;
 }
 
 function unfeeder() {
@@ -43,5 +45,13 @@ function unfeeder() {
         e.remove();
       }
     });
+  }
+
+  if (hideNextFeed === "true") {
+    (
+      document.querySelector(
+        "button.ytp-autonav-toggle:has([aria-checked='true']"
+      ) as HTMLButtonElement | undefined
+    )?.click();
   }
 }
