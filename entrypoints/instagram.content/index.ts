@@ -8,13 +8,17 @@ export default defineContentScript({
   main(ctx) {
     Config(ConfigurationShape["www.instagram.com"], onUpdate);
     NewObserver(unfeeder, ctx);
-    AddNoScroll(
-      () => document.URL.includes("reel") && shortform !== "show",
-      ["ArrowDown", "ArrowUp", " "]
-    );
+    AddNoScroll(scrollBlockerActive, ["ArrowDown", "ArrowUp", " "]);
     unfeeder();
   },
 });
+
+function scrollBlockerActive(event: Event) {
+  const inComments =
+    (event.target as HTMLElement).closest("div:has(a img):not(:has(video))") !==
+    null;
+  return document.URL.includes("reel") && shortform !== "show" && !inComments;
+}
 
 function onUpdate(key: string, value: string) {
   if (key === "local:instagram-shortform") shortform = value;

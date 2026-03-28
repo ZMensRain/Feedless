@@ -9,13 +9,18 @@ export default defineContentScript({
   main(ctx) {
     Config(ConfigurationShape["www.youtube.com"], onUpdate);
     NewObserver(unfeeder, ctx);
-    AddNoScroll(
-      () => document.URL.includes("shorts") && shortform !== "show",
-      ["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp", " "]
-    );
+    AddNoScroll(scrollBlockerActive, ["ArrowDown", "ArrowUp"]);
     unfeeder();
   },
 });
+
+function scrollBlockerActive(event: Event) {
+  const inComments =
+    (event.target as HTMLElement).closest(
+      `[target-id="engagement-panel-comments-section"]`
+    ) !== null;
+  return document.URL.includes("shorts") && shortform !== "show" && !inComments;
+}
 
 function onUpdate(key: string, value: string) {
   if (key === "local:youtube-shortform") shortform = value;
