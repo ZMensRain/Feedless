@@ -17,8 +17,10 @@ function isBooleanOption(options: string[]): boolean {
 
 export const ConfigOption = (props: Props) => {
   return (
-    <div class="flex flex-row justify-between items-center overflow-auto">
-      <label for={props.config.Key}>{props.config.HumanName}</label>
+    <div class="flex flex-row items-center overflow-auto bg-surface rounded-xl p-2 pr-4 cursor-pointer">
+      <label for={props.config.Key} class="p-2 flex-1 cursor-pointer">
+        {props.config.HumanName}
+      </label>
       {isBooleanOption(props.config.Values) ? (
         <input
           type="checkbox"
@@ -31,7 +33,7 @@ export const ConfigOption = (props: Props) => {
         <select
           id={props.config.Key}
           onChange={(e) => props.onChange(e.target.value)}
-          class="border-2 p-1.5 rounded-md"
+          class="border-2 p-1.5 rounded-md cursor-pointer"
         >
           <For each={props.config.Values}>
             {(opt) => <option selected={props.value == opt}>{opt}</option>}

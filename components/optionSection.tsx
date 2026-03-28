@@ -114,7 +114,7 @@ function QuickSettingsButton(props: props) {
   return (
     <select
       onChange={(e) => props.onChange(e.target.value)}
-      class="p-1.5 rounded-md"
+      class="p-1.5 rounded-md cursor-pointer"
       aria-label={props.name + " templates"}
     >
       <For each={options}>
