@@ -32,7 +32,13 @@ section:has(> main) {
 
 // hide reels when they are blocked
 :root[instagram-shortform="block"] {
-  video {
-    display: none !important;
+  main {
+    display: none;
+  }
+}
+
+:root[instagram-hide-more-from-feed="true"][page-path*="/reel"] {
+  div:not(:has(video)):has(a[href*="/p/"] img) {
+    display: none;
   }
 }
