@@ -105,10 +105,10 @@ type props = {
 };
 
 function QuickSettingsButton(props: props) {
-  const options = [
+  const options = () => [
     "Default",
     ...(props.isMaxRequired ? ["Max"] : []),
-    "Custom",
+    ...(props.currentSetting === "Custom" ? ["Custom"] : []),
   ];
 
   return (
@@ -117,7 +117,7 @@ function QuickSettingsButton(props: props) {
       class="p-1.5 rounded-md cursor-pointer"
       aria-label={props.name + " templates"}
     >
-      <For each={options}>
+      <For each={options()}>
         {(opt) => <option selected={props.currentSetting == opt}>{opt}</option>}
       </For>
     </select>
