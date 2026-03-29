@@ -15,7 +15,7 @@ export default function ConfirmationDialog(props: ConfirmationDialogProps) {
         if (typeof props.ref === "function") props.ref(el);
         else if (props.ref) (props as any).ref = el;
       }}
-      class="m-auto bg-surface text-text p-4 rounded-2xl"
+      class="m-auto bg-surface text-text p-4 rounded-2xl backdrop:bg-black backdrop:opacity-50 "
     >
       <p>{props.message}</p>
       <div class="flex flex-row gap-4 justify-center mt-4">
