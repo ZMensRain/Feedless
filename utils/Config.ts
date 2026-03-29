@@ -193,7 +193,7 @@ function feedKeys(platform: string, feeds?: string[]): ConfigurationKey[] {
     },
     ...feeds.map(
       (feed): ConfigurationKey => ({
-        HumanName: `Hide ${feed} Feed`,
+        HumanName: `Hide ${feed.replaceAll("-", " ")} Feed`,
         Key: `local:${platform}-hide-${feed}-feed`,
         Values: ["true", "false"],
         Max: "true",

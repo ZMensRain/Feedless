@@ -18,7 +18,10 @@ function isBooleanOption(options: string[]): boolean {
 export const ConfigOption = (props: Props) => {
   return (
     <div class="flex flex-row items-center overflow-auto bg-surface rounded-xl p-2 pr-4 cursor-pointer">
-      <label for={props.config.Key} class="p-2 flex-1 cursor-pointer">
+      <label
+        for={props.config.Key}
+        class="p-2 flex-1 cursor-pointer capitalize"
+      >
         {props.config.HumanName}
       </label>
       {isBooleanOption(props.config.Values) ? (
