@@ -1,4 +1,5 @@
 import { ConfigOption } from "./option";
+import QuickSettingsDropdown from "./QuickSettingsDropdown";
 
 type Props = {
   key: string;
@@ -71,7 +72,7 @@ export const ConfigSection = (props: Props) => {
     >
       <div class="flex justify-between">
         <h2 class="text-3xl font-bold">{props.config.HumanName}</h2>
-        <QuickSettingsButton
+        <QuickSettingsDropdown
           name={props.key}
           currentSetting={currentSetting()}
           isMaxRequired={isMaxRequired()}
@@ -96,30 +97,3 @@ export const ConfigSection = (props: Props) => {
     </section>
   );
 };
-
-type props = {
-  name: string;
-  isMaxRequired: boolean;
-  currentSetting: string;
-  onChange: (setting: string) => void;
-};
-
-function QuickSettingsButton(props: props) {
-  const options = () => [
-    "Default",
-    ...(props.isMaxRequired ? ["Max"] : []),
-    ...(props.currentSetting === "Custom" ? ["Custom"] : []),
-  ];
-
-  return (
-    <select
-      onChange={(e) => props.onChange(e.target.value)}
-      class="p-1.5 rounded-md cursor-pointer"
-      aria-label={props.name + " templates"}
-    >
-      <For each={options()}>
-        {(opt) => <option selected={props.currentSetting == opt}>{opt}</option>}
-      </For>
-    </select>
-  );
-}
