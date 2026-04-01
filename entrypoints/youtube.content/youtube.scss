@@ -38,6 +38,12 @@
   button.ytp-autonav-toggle {
     display: none;
   }
+  .ytp-fullscreen-grid {
+    display: none;
+  }
+  .ytp-gradient-bottom {
+    display: none;
+  }
 }
 
 :root[youtube-hide-subscription-feed="true"] {
