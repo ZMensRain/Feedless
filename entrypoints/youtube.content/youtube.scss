@@ -35,6 +35,15 @@
   body {
     overflow-x: hidden;
   }
+  button.ytp-autonav-toggle {
+    display: none;
+  }
+  .ytp-fullscreen-grid {
+    display: none;
+  }
+  .ytp-gradient-bottom {
+    display: none;
+  }
 }
 
 :root[youtube-hide-subscription-feed="true"] {
@@ -114,5 +123,17 @@
   }
   .ytp-fullscreen-grid-stills-container {
     display: none !important;
+  }
+}
+
+// hides the "main" content while navigating
+ytd-app > #content {
+  opacity: 1;
+  transition: 1s;
+}
+html:has(yt-page-navigation-progress:not([hidden=""])) {
+  ytd-app > #content {
+    opacity: 0;
+    transition: 0s;
   }
 }

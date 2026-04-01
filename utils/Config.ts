@@ -49,6 +49,7 @@ export type ConfigurationKey = {
   HumanName: string;
   Key: StorageItemKey;
   Values: string[];
+  Max: string;
 };
 
 export type PlatformConfiguration = {
@@ -61,39 +62,28 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     Keys: [
       ...shortFormKeys("youtube"),
       ...feedKeys("youtube", ["up-next", "subscription"]),
-      {
-        HumanName: "Hide More From Youtube",
-        Key: "local:youtube-hide-more-from-youtube",
-        Values: ["true", "false"],
-      },
-      {
-        HumanName: "Hide Explore Sidebar Section",
-        Key: "local:youtube-hide-explore",
-        Values: ["true", "false"],
-      },
-      {
-        HumanName: "Hide You Sidebar Section",
-        Key: "local:youtube-hide-you-section",
-        Values: ["false", "true"],
-      },
+      booleanKey(
+        "local:youtube-hide-more-from-youtube",
+        "Hide More From Youtube"
+      ),
+      booleanKey("local:youtube-hide-explore", "Hide Explore Sidebar Section"),
+      booleanKey(
+        "local:youtube-hide-you-section",
+        "Hide You Sidebar Section",
+        false
+      ),
+      booleanKey("local:youtube-hide-end-screen", "Hide End Screen bits"),
     ],
     HumanName: "YouTube",
   },
   "www.linkedin.com": {
     Keys: [
       ...feedKeys("linkedin"),
-      {
-        HumanName: "Hide Premium Upsells",
-        Key: "local:linkedin-hide-premium-upsells",
-
-        Values: ["true", "false"],
-      },
-      {
-        HumanName: "Hide Add to Your Feed",
-        Key: "local:linkedin-hide-add-to-your-feed",
-
-        Values: ["true", "false"],
-      },
+      booleanKey("local:linkedin-hide-premium-upsells", "Hide Premium Upsells"),
+      booleanKey(
+        "local:linkedin-hide-add-to-your-feed",
+        "Hide Add to Your Feed"
+      ),
     ],
     HumanName: "LinkedIn",
   },
@@ -117,7 +107,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
   },
   "www.instagram.com": {
     Keys: [
-      ...feedKeys("instagram", ["explore"]),
+      ...feedKeys("instagram", ["explore", "more-from"]),
       ...shortFormKeys("instagram"),
     ],
     HumanName: "Instagram",
@@ -125,12 +115,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
   "music.youtube.com": {
     Keys: [
       ...feedKeys("youtube_music", ["explore"]),
-      {
-        HumanName: "Hide Related",
-        Key: "local:youtube_music-hide-related",
-
-        Values: ["true", "false"],
-      },
+      booleanKey("local:youtube_music-hide-related", "Hide Related"),
     ],
     HumanName: "YouTube Music",
   },
@@ -144,22 +129,13 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
     HumanName: "Bluesky",
     Keys: [
       ...feedKeys("bsky", ["explore"]),
-      {
-        Key: "local:bsky-hide-trending",
-        HumanName: "Hide Trending",
-        Values: ["true", "false"],
-      },
+      booleanKey("local:bsky-hide-trending", "Hide Trending"),
     ],
   },
   "substack.com": {
     Keys: [
       ...feedKeys("substack", ["explore", "up-next", "new-bestsellers"]),
-      {
-        HumanName: "Hide Related",
-        Key: "local:substack-hide-related",
-
-        Values: ["true", "false"],
-      },
+      booleanKey("local:substack-hide-related", "Hide Related"),
     ],
     HumanName: "Substack",
   },
@@ -171,12 +147,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
         "whats-new",
         "explore",
       ]),
-      {
-        HumanName: "Hide Premium",
-        Key: "local:twitter-hide-premium",
-
-        Values: ["true", "false"],
-      },
+      booleanKey("local:twitter-hide-premium", "Hide Premium"),
     ],
     HumanName: "Twitter/X",
   },
@@ -191,10 +162,23 @@ function shortFormKeys(platform: string): ConfigurationKey[] {
     {
       HumanName: "Shortform",
       Key: `local:${platform}-shortform`,
-
       Values: ["block", "show", "hide"],
+      Max: "block",
     },
   ];
+}
+
+function booleanKey(
+  Key: StorageItemKey,
+  HumanName: string,
+  Default: boolean = true
+): ConfigurationKey {
+  return {
+    HumanName,
+    Key,
+    Max: "true",
+    Values: Default ? ["true", "false"] : ["false", "true"],
+  };
 }
 
 function feedKeys(platform: string, feeds?: string[]): ConfigurationKey[] {
@@ -204,15 +188,15 @@ function feedKeys(platform: string, feeds?: string[]): ConfigurationKey[] {
     {
       HumanName: "Hide Home Feed",
       Key: `local:${platform}-hide-feed`,
-
       Values: ["true", "false"],
+      Max: "true",
     },
     ...feeds.map(
       (feed): ConfigurationKey => ({
-        HumanName: `Hide ${feed} Feed`,
+        HumanName: `Hide ${feed.replaceAll("-", " ")} Feed`,
         Key: `local:${platform}-hide-${feed}-feed`,
-
         Values: ["true", "false"],
+        Max: "true",
       })
     ),
   ];

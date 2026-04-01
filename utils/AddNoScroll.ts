@@ -1,16 +1,16 @@
 export default function AddNoScroll(
-  isActive: (key: string) => boolean,
+  isActive: (event: Event) => boolean,
   keys: string[]
 ) {
   const preventScroll = (event: Event) => {
-    if (!isActive(event.type)) return;
+    if (!isActive(event)) return;
 
     event.preventDefault();
     event.stopPropagation();
   };
 
   const removeCertainKeys = (event: KeyboardEvent) => {
-    if (!isActive(event.key)) return;
+    if (!isActive(event)) return;
     if (!keys.includes(event.key)) return;
 
     event.preventDefault();
@@ -29,8 +29,20 @@ export default function AddNoScroll(
     passive,
   });
   // prevent other events that are used for scrolling
-  const events = ["scroll", "wheel", "touchmove", "pointerdown", "pointerup"];
+  const events = [
+    "scroll",
+    "wheel",
+    "mousewheel",
+    "DOMMouseScroll",
+    "scrollend",
+    "dragstart",
+    "dragend",
+    "drag",
+  ];
   events.forEach((eventType) =>
-    window.addEventListener(eventType, preventScroll, { passive })
+    window.addEventListener(eventType, preventScroll, {
+      passive,
+      capture: true,
+    })
   );
 }

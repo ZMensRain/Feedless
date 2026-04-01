@@ -1,6 +1,7 @@
 import "./youtube.scss";
 
 let shortform = "show";
+let hideNextFeed = "true";
 
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
@@ -8,16 +9,22 @@ export default defineContentScript({
   main(ctx) {
     Config(ConfigurationShape["www.youtube.com"], onUpdate);
     NewObserver(unfeeder, ctx);
-    AddNoScroll(
-      () => document.URL.includes("shorts") && shortform !== "show",
-      ["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp", " "]
-    );
+    AddNoScroll(scrollBlockerActive, ["ArrowDown", "ArrowUp"]);
     unfeeder();
   },
 });
 
+function scrollBlockerActive(event: Event) {
+  const inComments =
+    (event.target as HTMLElement).closest(
+      `[target-id="engagement-panel-comments-section"]`
+    ) !== null;
+  return document.URL.includes("shorts") && shortform !== "show" && !inComments;
+}
+
 function onUpdate(key: string, value: string) {
   if (key === "local:youtube-shortform") shortform = value;
+  if (key === "local:youtube-hide-up-next-feed") hideNextFeed = value;
 }
 
 function unfeeder() {
@@ -43,5 +50,13 @@ function unfeeder() {
         e.remove();
       }
     });
+  }
+
+  if (hideNextFeed === "true") {
+    (
+      document.querySelector(
+        "button.ytp-autonav-toggle:has([aria-checked='true']"
+      ) as HTMLButtonElement | undefined
+    )?.click();
   }
 }
