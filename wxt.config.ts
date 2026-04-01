@@ -13,7 +13,7 @@ export default defineConfig({
     name: "Feedless",
     browser_specific_settings: {
       gecko: {
-        id: "{27ef3b57-547f-4c2a-a72d-49e316fdcf99}",
+        id: "{53a6eedc-9cce-4134-b93c-5542108a18ce}",
         data_collection_permissions: {
           required: ["none"],
         },
