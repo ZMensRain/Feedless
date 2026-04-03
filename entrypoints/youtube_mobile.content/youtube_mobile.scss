@@ -1,0 +1,88 @@
+// hides the more from youtube section that contains premium, music, and youtube kids
+:root[youtube-hide-more-from-youtube="true"] {
+  navigation-item-view-model:has([href="https://studio.youtube.com/"]),
+  navigation-item-view-model:has([href="https://music.youtube.com/"]),
+  navigation-item-view-model:has([href*="https://www.youtubekids.com/"])
+  {
+    display: none !important;
+  }
+  divider-view-model {
+    display: none;
+  }
+}
+
+// hides the explore section in the sidebar
+:root[youtube-hide-explore="true"] {
+  navigation-item-view-model:has([href*="/gaming"]),
+  navigation-item-view-model:has([href*="/podcasts"]),
+  navigation-item-view-model:has([href*="/channel/"]) {
+    display: none;
+  }
+
+  //
+  ytm-rich-section-renderer:has(chips-shelf-with-video-shelf-renderer) {
+    outline: 1px solid red;
+  }
+}
+
+// hides the you section with history, watch later, liked videos, and so on
+:root[youtube-hide-you-section="true"] {
+  ytm-pivot-bar-item-renderer:has(.pivot-you) {
+    display: none;
+  }
+  &[page-path*="/feed/library/"] {
+    ytm-browse {
+      display: none;
+    }
+  }
+}
+
+:root[youtube-hide-up-next-feed="true"] {
+  ytm-item-section-renderer[section-identifier="related-items"] {
+    display: none;
+  }
+  button.ytm-autonav-toggle-button-container {
+    display: none;
+  }
+}
+
+:root[youtube-hide-subscription-feed="true"] {
+  ytm-pivot-bar-item-renderer:has(.pivot-subs) {
+    display: none;
+  }
+}
+
+:root[youtube-hide-subscription-feed="true"][page-path="/feed/subscriptions/"],
+:root[page-path="/"][youtube-hide-feed="true"] {
+  ytm-browse {
+    display: none !important;
+  }
+}
+
+// hides the end screen bits
+:root[youtube-hide-end-screen="true"] {
+  #player-endscreen {
+    display: none;
+  }
+}
+
+/* Hides shorts tab on the channel page */
+
+:root[youtube-shortform="block"],
+:root[youtube-shortform="hide"] {
+  ytm-pivot-bar-item-renderer:has(.pivot-shorts),
+  ytm-reel-shelf-renderer,
+  ytm-rich-section-renderer:has([href*="shorts"]),
+  ytm-reel-shelf-renderer,
+  grid-shelf-view-model:has(ytm-shorts-lockup-view-model) {
+    display: none !important;
+  }
+  ytm-video-with-context-renderer:has([href*="/shorts/"]) {
+    display: none;
+  }
+}
+
+// completely blocks shorts
+:root[youtube-shortform="block"][page-path*="/shorts/"] #player-container-id {
+  display: none;
+}

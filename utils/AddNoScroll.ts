@@ -38,6 +38,7 @@ export default function AddNoScroll(
     "dragstart",
     "dragend",
     "drag",
+    "touchmove",
   ];
   events.forEach((eventType) =>
     window.addEventListener(eventType, preventScroll, {
