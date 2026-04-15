@@ -56,6 +56,14 @@
   ytd-guide-section-renderer:has([href*="@"]) {
     display: none;
   }
+
+  // hide notifications
+  ytd-notification-renderer {
+    display: none;
+  }
+  ytd-notification-topbar-button-renderer {
+    display: none !important;
+  }
 }
 
 :root[youtube-hide-subscription-feed="true"][page-path="/feed/subscriptions/"],

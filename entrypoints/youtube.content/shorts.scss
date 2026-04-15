@@ -64,6 +64,9 @@
   ytd-rich-item-renderer:has([href*="short"]) {
     display: none;
   }
+  ytd-notification-renderer:has([href*="short"]) {
+    display: none;
+  }
 }
 
 // completely blocks shorts
