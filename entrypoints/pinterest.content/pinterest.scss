@@ -37,6 +37,14 @@
     opacity: 0;
     visibility: hidden;
   }
+
+  [role="tablist"]:has([href*="tabId"]) {
+    display: none;
+  }
+
+  a[href="#"] {
+    display: none;
+  }
 }
 :root[pinterest-hide-explore-feed="true"][page-path*="/ideas/"] {
   [role="main"] {
@@ -75,6 +83,19 @@
   [data-test-id*="skeleton"] {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+:root[pinterest-hide-explore-feed="true"] {
+  &[page-path*="/search/"] {
+    // mobile version
+    [data-test-id="default-tab"] {
+      display: none;
+    }
+  }
+  // desktop version
+  #SuggestionsMenu {
+    display: none !important;
   }
 }
 
