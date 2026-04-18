@@ -80,6 +80,10 @@
   ytm-video-with-context-renderer:has([href*="/shorts/"]) {
     display: none;
   }
+
+  [tab-title="Shorts"] {
+    display: none;
+  }
 }
 
 // completely blocks shorts
