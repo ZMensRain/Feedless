@@ -54,6 +54,7 @@ function App() {
           Source
         </a>
       </div>
+      <p class="text-primary">v{import.meta.env.VITE_APP_VERSION}</p>
     </div>
   );
 }

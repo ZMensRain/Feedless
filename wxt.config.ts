@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { defineConfig, WxtViteConfig, UserConfig } from "wxt";
+import pkg from "./package.json";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -21,13 +22,17 @@ export default defineConfig({
     },
     permissions: ["storage"],
   },
-  vite: () =>
-    ({
+  vite: () => {
+    return {
       plugins: [tailwindcss()],
       resolve: {
         alias: {
           "@": path.resolve(__dirname, "./"),
         },
       },
-    } as WxtViteConfig),
+      define: {
+        "import.meta.env.VITE_APP_VERSION": JSON.stringify(pkg.version),
+      },
+    } as WxtViteConfig;
+  },
 } as UserConfig);

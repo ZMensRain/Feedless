@@ -54,7 +54,10 @@ export default function ConfigPage() {
           </For>
         </div>
         <footer class="border-t pt-4 mt-4">
-          <p>Thank You HeroRareheart for the original logo design</p>
+          <p>
+            v{import.meta.env.VITE_APP_VERSION} Thank You HeroRareheart for the
+            original logo design
+          </p>
         </footer>
 
         <ConfirmationDialog
