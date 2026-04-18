@@ -134,6 +134,12 @@
   .ytp-fullscreen-grid-stills-container {
     display: none !important;
   }
+
+  // hide the hide endscreen bits button
+
+  #movie_player toggle-button-view-model {
+    display: none;
+  }
 }
 
 // hides the "main" content while navigating
