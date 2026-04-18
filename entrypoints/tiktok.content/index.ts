@@ -1,3 +1,4 @@
+import IsMobile from "@/utils/IsMobile";
 import "./tiktok.scss";
 
 let shortform = "block";
@@ -18,7 +19,18 @@ function scrollBlockerActive(event: Event) {
     (event.target as HTMLElement).closest(
       `[class*="DivCommentListContainer"`
     ) !== null;
-  return document.URL.includes("video") && shortform !== "show" && !inComments;
+
+  const mobile = IsMobile();
+  const path = GetPath();
+
+  let onAScrollPage = false;
+
+  if (path === "/" && mobile) onAScrollPage = true;
+  if (path.includes("video")) onAScrollPage = true;
+
+  console.log(onAScrollPage && shortform !== "show" && !inComments);
+
+  return onAScrollPage && shortform !== "show" && !inComments;
 }
 
 function onUpdate(key: string, value: string) {
