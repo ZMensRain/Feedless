@@ -1,30 +1,41 @@
 /* Removes feed */
 
-:root[linkedin-hide-feed="true"]
-  div[data-testid="mainFeed"]
-  > :not(:nth-child(1)) {
-  display: none;
+:root[linkedin-hide-feed="true"] {
+  div[data-testid="mainFeed"] > :not(:nth-child(1)) {
+    display: none;
+  }
+  .feed-container {
+    display: none !important;
+  }
 }
 
 :root[linkedin-hide-premium-upsells="true"] {
   /* premium upsells */
   div:has(> *[data-view-name="premium-nav-upsell-text"]) {
-    display: none;
+    display: none !important;
   }
 
   div:has(> *[data-view-name="premium-upsell-link"]) {
-    display: none;
+    display: none !important;
   }
   div:has(> * > div[data-view-name="identity-module-upsell"]) {
-    display: none;
+    display: none !important;
   }
 
   div:has(> [id*="premium"]) {
-    display: none;
+    display: none !important;
   }
 
   .job-details-module:has([href*="premium/products"]) {
-    display: none;
+    display: none !important;
+  }
+  [class*="premium"] {
+    display: none !important;
+  }
+
+  // some weird crap
+  nav + div {
+    display: none !important;
   }
 }
 

@@ -89,6 +89,18 @@
   *:has(> a[href="/explore"]) {
     display: none;
   }
+
+  &[page-path="/discover/"] {
+    //
+    //
+    //
+    [class*="DivPageHeaderContainer"],
+    [class*="DivNavCardListContainer"],
+    [class*="DivVideoListContainer"],
+    [class*="DivFloatButtonWrapper"] {
+      display: none;
+    }
+  }
 }
 
 // following button
@@ -104,4 +116,16 @@
 // hide the log in button in the sidebar
 #header-login-button {
   display: none;
+}
+
+// mobile
+:root[tiktok-hide-feed="true"],
+:root[tiktok-shortform="block"],
+:root[tiktok-shortform="hide"] {
+  &[page-path="/"],
+  &[page-path="/foryou/"] {
+    [class*="DivSwiperContainer"] {
+      display: none;
+    }
+  }
 }
