@@ -6,6 +6,7 @@ let hideNextFeed = "true";
 export default defineContentScript({
   matches: ["*://www.youtube.com/*"],
   runAt: "document_start",
+  allFrames: true,
   main(ctx) {
     Config(ConfigurationShape["www.youtube.com"], onUpdate);
     NewObserver(unfeeder, ctx);

@@ -44,6 +44,15 @@
   .ytp-gradient-bottom {
     display: none;
   }
+
+  // embeds
+
+  .fullscreen-watch-next-entrypoint-wrapper {
+    display: none;
+  }
+  ytm-fullscreen-related-videos-entry-point-view-model {
+    display: none;
+  }
 }
 
 :root[youtube-hide-subscription-feed="true"] {
