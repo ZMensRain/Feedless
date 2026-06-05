@@ -1,81 +1,147 @@
 //hides the "What's new" feed on the right sidebar
 :root[twitter-hide-whats-new-feed="true"] {
-  *:has([data-testid*="news_sidebar_article"]):not(:has(input)) {
-    display: none;
-  }
+	*:has([data-testid*="news_sidebar_article"]):not(:has(input)) {
+		display: none;
+	}
 }
 
 :root[twitter-hide-premium="true"] {
-  // hides the "Premium" aside on the right sidebar
-  div:has(> aside [href="/i/premium_sign_up"]) {
-    display: none;
-  }
-  // hides the "Premium" button on the left sidebar
-  [href="/i/premium_sign_up"] {
-    display: none;
-  }
+	// hides the "Premium" aside on the right sidebar
+	div:has(> aside [href="/i/premium_sign_up"]) {
+		display: none;
+	}
+	// hides the "Premium" button on the left sidebar
+	[href="/i/premium_sign_up"] {
+		display: none;
+	}
+	[data-testid="verified_profile_visitor_upsell"] {
+		display: none;
+	}
 }
 
 // trending section
 :root[twitter-hide-trending-feed="true"] {
-  &[page-path="/home/"] {
-    div:has(> section [data-testid="trend"]) {
-      display: none;
-    }
-  }
-  [data-testid="trend"] {
-    display: none;
-  }
+	[data-testid="sidebarColumn"] {
+		div:has(> section [data-testid="trend"]) {
+			display: none;
+		}
+	}
 
-  &[page-path*="trending"] {
-    [data-testid="primaryColumn"] {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
+	&[page-path*="explore"] {
+		[data-testid="primaryColumn"] {
+			div:has(h2):has(+ * [data-testid="trend"]) {
+				display: none;
+			}
+		}
+	}
+
+	[data-testid="trend"] {
+		display: none;
+	}
+
+	&[page-path*="trending"] {
+		[data-testid="primaryColumn"] {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+	div:has(> [href*="/explore/tabs/trending"]) {
+		display: none;
+	}
 }
 
 // who to follow section
 :root[twitter-hide-who-to-follow-feed="true"] {
-  // right sidebar
-  div:has(> aside [data-testid="UserCell"]) {
-    display: none;
-  }
+	// right sidebar
+	[data-testid="sidebarColumn"] {
+		div:has([data-testid="UserCell"]):has(+ :not([data-testid="UserCell"])) {
+			display: none;
+		}
+	}
 
-  // left sidebar
-  [href="/i/connect_people"] {
-    display: none;
-  }
+	// left sidebar
+	[href="/i/connect_people"] {
+		display: none;
+	}
 
-  // page
-  &[page-path="/i/connect_people/"] {
-    [data-testid="primaryColumn"] {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
+	// page
+	&[page-path="/i/connect_people/"] [data-testid="primaryColumn"] {
+		opacity: 0;
+		visibility: hidden;
+	}
 
-  // explore page
-  &[page-path="/explore/"] {
-    [data-testid="UserCell"] {
-      display: none;
-    }
-  }
+	// explore page
+	&[page-path="/explore/"] {
+		[data-testid="UserCell"] {
+			display: none;
+		}
+		[data-testid="primaryColumn"] {
+			div:has(h2):has(+ * [data-testid="UserCell"]) {
+				display: none;
+			}
+		}
+	}
+	&[page-path="/home/"] {
+		[data-testid="primaryColumn"] {
+			div:has(button button):has(~ div article) {
+				display: none;
+			}
+		}
+	}
+
+	// we don't want to hide user profiles under these paths
+	// https://x.com/.../verified_followers
+	// https://x.com/.../followers_you_follow
+	// https://x.com/.../followers
+	// https://x.com/.../following
+	&:not([page-path*="follow"]) {
+		[data-testid="UserCell"] {
+			display: none;
+		}
+	}
+
+	// my profile page
+	&:has([data-testid="editProfileButton"]) {
+		[data-testid="primaryColumn"] {
+			div:has(h2):has(+ * [data-testid="UserCell"]) {
+				display: none;
+			}
+		}
+	}
+	[href*="/i/connect_people"] {
+		display: none;
+	}
 }
 
+// hide following feed
 :root[twitter-hide-feed="true"][page-path="/home/"] {
-  [data-testid="primaryColumn"] {
-    opacity: 0;
-    visibility: hidden;
-  }
+	[data-testid="primaryColumn"] {
+		&:has(nav [role="presentation"]:last-child [aria-selected="true"]) {
+			section {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
+}
+// hide for you feed
+:root[twitter-hide-for-you-feed="true"][page-path="/home/"] {
+	[data-testid="primaryColumn"] {
+		&:has(nav [role="presentation"]:first-child [aria-selected="true"]) {
+			section {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+	}
 }
 
 :root[twitter-hide-explore-feed="true"][page-path="/explore/"] {
-  nav:has([href*="/explore/tabs/"]) {
-    display: none;
-  }
-  [data-testid="cellInnerDiv"] {
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
+	nav:has([href*="/explore/tabs/"]) {
+		display: none;
+	}
+	[data-testid="cellInnerDiv"] {
+		opacity: 0 !important;
+		visibility: hidden !important;
+	}
 }
