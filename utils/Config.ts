@@ -101,7 +101,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
 	},
 	"substack.com": {
 		Keys: [
-			...feedKeys("substack", ["explore", "up-next", "new-bestsellers"]),
+			...feedKeys("substack", ["explore", "up-next", "new-bestsellers", "you-may-know"]),
 			booleanKey("local:substack-hide-related", "Hide Related"),
 		],
 		HumanName: "Substack",
