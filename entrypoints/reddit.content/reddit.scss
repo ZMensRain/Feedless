@@ -1,19 +1,30 @@
 /* feed*/
 
 :root[reddit-hide-feed="true"][page-path="/"] {
-  .subgrid-container {
-    display: none;
-  }
+	.subgrid-container {
+		display: none;
+	}
 }
 
 :root[reddit-hide-explore-feed="true"][page-path="/explore/"] {
-  .subgrid-container {
-    display: none;
-  }
+	.subgrid-container {
+		display: none;
+	}
 }
 
 :root[reddit-hide-related-posts-feed="true"] {
-  pdp-right-rail {
-    display: none;
-  }
+	pdp-right-rail {
+		display: none;
+	}
+}
+:root[reddit-hide-popular-communities-feed="true"] {
+	aside[class*="popular-communities"] {
+		display: none;
+	}
+}
+
+:root[page-path="/news/"] {
+	.subgrid-container {
+		display: none;
+	}
 }
