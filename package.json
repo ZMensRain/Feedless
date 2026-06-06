@@ -1,30 +1,30 @@
 {
-  "name": "feedless",
-  "description": "A browser extension for removing the feeds on various platforms",
-  "private": true,
-  "version": "0.3.1",
-  "type": "module",
-  "scripts": {
-    "dev": "wxt",
-    "dev:firefox": "wxt -b firefox",
-    "build": "wxt build",
-    "build:firefox": "wxt build -b firefox",
-    "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
-    "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare"
-  },
-  "devDependencies": {
-    "@wxt-dev/auto-icons": "^1.1.1",
-    "@wxt-dev/module-solid": "^1.1.4",
-    "sass-embedded": "^1.97.3",
-    "typescript": "^5.9.3",
-    "wxt": "^0.20.17"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.2.2",
-    "path": "^0.12.7",
-    "solid-js": "^1.9.11",
-    "tailwindcss": "^4.2.2"
-  }
+	"name": "feedless",
+	"description": "A browser extension for removing the feeds on various platforms",
+	"private": true,
+	"version": "0.3.2",
+	"type": "module",
+	"scripts": {
+		"dev": "wxt",
+		"dev:firefox": "wxt -b firefox",
+		"build": "wxt build",
+		"build:firefox": "wxt build -b firefox",
+		"zip": "wxt zip",
+		"zip:firefox": "wxt zip -b firefox",
+		"compile": "tsc --noEmit",
+		"postinstall": "wxt prepare"
+	},
+	"devDependencies": {
+		"@wxt-dev/auto-icons": "^1.1.1",
+		"@wxt-dev/module-solid": "^1.1.4",
+		"sass-embedded": "^1.97.3",
+		"typescript": "^5.9.3",
+		"wxt": "^0.20.17"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.2.2",
+		"path": "^0.12.7",
+		"solid-js": "^1.9.11",
+		"tailwindcss": "^4.2.2"
+	}
 }
