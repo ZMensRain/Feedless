@@ -2,168 +2,176 @@
 
 // hides the more from youtube section that contains premium, music, and youtube kids
 :root[youtube-hide-more-from-youtube="true"] {
-  ytd-guide-section-renderer:has(a[href*="/premium"]) {
-    display: none;
-  }
+	ytd-guide-section-renderer:has(a[href*="/premium"]) {
+		display: none;
+	}
 }
 
 // hides the explore section in the sidebar
 :root[youtube-hide-explore="true"] {
-  ytd-guide-section-renderer:has(a[href*="/gaming"]) {
-    display: none;
-  }
+	ytd-guide-section-renderer:has(a[href*="/gaming"]) {
+		display: none;
+	}
 }
 
 // hides the you section with history, watch later, liked videos, and so on
 :root[youtube-hide-you-section="true"] {
-  ytd-guide-section-renderer:has([href="/feed/history"]) {
-    display: none;
-  }
+	ytd-guide-section-renderer:has([href="/feed/history"]) {
+		display: none;
+	}
 }
 
 :root[youtube-hide-up-next-feed="true"] {
-  // hides recommended section while still allowing playlists to be shown
-  // also makes sure that video is centered
-  #secondary:has(ytd-playlist-panel-renderer[hidden]) {
-    display: none;
-  }
+	// hides recommended section while still allowing playlists to be shown
+	// also makes sure that video is centered
+	#secondary:not(
+			:has(
+					ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]
+						[data-target-id="PAmodern_transcript_view"],
+					ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]
+						ytd-transcript-renderer,
+					ytd-playlist-panel-renderer:not([hidden])
+				)
+		) {
+		display: none;
+	}
 
-  /* hides the recommend when there is a playlist */
-  #related {
-    display: none;
-  }
-  body {
-    overflow-x: hidden;
-  }
-  button.ytp-autonav-toggle {
-    display: none;
-  }
-  .ytp-fullscreen-grid {
-    display: none;
-  }
-  .ytp-gradient-bottom {
-    display: none;
-  }
+	/* hides the recommend when there is a playlist */
+	#related {
+		display: none;
+	}
+	body {
+		overflow-x: hidden;
+	}
+	button.ytp-autonav-toggle {
+		display: none;
+	}
+	.ytp-fullscreen-grid {
+		display: none;
+	}
+	.ytp-gradient-bottom {
+		display: none;
+	}
 
-  // embeds
+	// embeds
 
-  .fullscreen-watch-next-entrypoint-wrapper {
-    display: none;
-  }
-  ytm-fullscreen-related-videos-entry-point-view-model {
-    display: none;
-  }
+	.fullscreen-watch-next-entrypoint-wrapper {
+		display: none;
+	}
+	ytm-fullscreen-related-videos-entry-point-view-model {
+		display: none;
+	}
 }
 
 :root[youtube-hide-subscription-feed="true"] {
-  ytd-mini-guide-entry-renderer:has([href="/feed/subscriptions"]),
-  ytd-guide-entry-renderer:has([href="/feed/subscriptions"]) {
-    display: none;
-  }
+	ytd-mini-guide-entry-renderer:has([href="/feed/subscriptions"]),
+	ytd-guide-entry-renderer:has([href="/feed/subscriptions"]) {
+		display: none;
+	}
 
-  // hides the channels you are subscribed too in the sidebar
-  ytd-guide-section-renderer:has([href*="@"]) {
-    display: none;
-  }
+	// hides the channels you are subscribed too in the sidebar
+	ytd-guide-section-renderer:has([href*="@"]) {
+		display: none;
+	}
 
-  // hide notifications
-  ytd-notification-renderer {
-    display: none;
-  }
-  ytd-notification-topbar-button-renderer {
-    display: none !important;
-  }
+	// hide notifications
+	ytd-notification-renderer {
+		display: none;
+	}
+	ytd-notification-topbar-button-renderer {
+		display: none !important;
+	}
 }
 
 :root[youtube-hide-subscription-feed="true"][page-path="/feed/subscriptions/"],
 :root[page-path="/"][youtube-hide-feed="true"] {
-  // hiding the feed
-  ytd-rich-grid-renderer {
-    display: none;
-  }
+	// hiding the feed
+	ytd-rich-grid-renderer {
+		display: none;
+	}
 
-  #home-page-skeleton {
-    display: none !important;
-  }
+	#home-page-skeleton {
+		display: none !important;
+	}
 
-  /* Centering the searchbar */
-  #masthead-container {
-    transform: unset !important;
-  }
-  #masthead-container #center {
-    position: fixed;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    outline: 1px solid red;
-    justify-content: center;
-    pointer-events: none;
-  }
-  #masthead-container #center > * {
-    pointer-events: auto;
-  }
-  #masthead-container {
-    yt-searchbox {
-      flex: unset !important;
-      min-width: 50vw;
-    }
-    ytd-topbar-logo-renderer {
-      position: fixed;
-      margin: auto;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 209px !important;
+	/* Centering the searchbar */
+	#masthead-container {
+		transform: unset !important;
+	}
+	#masthead-container #center {
+		position: fixed;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		outline: 1px solid red;
+		justify-content: center;
+		pointer-events: none;
+	}
+	#masthead-container #center > * {
+		pointer-events: auto;
+	}
+	#masthead-container {
+		yt-searchbox {
+			flex: unset !important;
+			min-width: 50vw;
+		}
+		ytd-topbar-logo-renderer {
+			position: fixed;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 209px !important;
 
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: end;
-      justify-content: center;
-      margin-bottom: 200px;
-      pointer-events: none;
-    }
-    ytd-topbar-logo-renderer a#logo {
-      scale: 2;
-      pointer-events: all;
-    }
-    #logo * {
-      position: unset;
-    }
-  }
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: end;
+			justify-content: center;
+			margin-bottom: 200px;
+			pointer-events: none;
+		}
+		ytd-topbar-logo-renderer a#logo {
+			scale: 2;
+			pointer-events: all;
+		}
+		#logo * {
+			position: unset;
+		}
+	}
 }
 
 // hides the end screen bits
 :root[youtube-hide-end-screen="true"] {
-  .ytp-ce-element {
-    display: none !important;
-  }
-  .ytp-fullscreen-grid-stills-container {
-    display: none !important;
-  }
+	.ytp-ce-element {
+		display: none !important;
+	}
+	.ytp-fullscreen-grid-stills-container {
+		display: none !important;
+	}
 
-  // hide the hide endscreen bits button
+	// hide the hide endscreen bits button
 
-  #movie_player toggle-button-view-model {
-    display: none;
-  }
+	#movie_player toggle-button-view-model {
+		display: none;
+	}
 
-  // embed
-  creator-endscreen {
-    display: none;
-  }
+	// embed
+	creator-endscreen {
+		display: none;
+	}
 }
 
 // hides the "main" content while navigating
 ytd-app > #content {
-  opacity: 1;
-  transition: 1s;
+	opacity: 1;
+	transition: 1s;
 }
 html:has(yt-page-navigation-progress:not([hidden=""])) {
-  ytd-app > #content {
-    opacity: 0;
-    transition: 0s;
-  }
+	ytd-app > #content {
+		opacity: 0;
+		transition: 0s;
+	}
 }
