@@ -22,44 +22,39 @@
 }
 
 :root[youtube-hide-up-next-feed="true"] {
-	// hides recommended section while still allowing playlists to be shown
-	// also makes sure that video is centered
-	#secondary:not(
-			:has(
-					ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]
-						[data-target-id="PAmodern_transcript_view"],
-					ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]
-						ytd-transcript-renderer,
-					ytd-playlist-panel-renderer:not([hidden])
-				)
-		) {
-		display: none;
-	}
+	&[page-path*="watch"] {
+		// allows secondary to collapse when there is nothing in it
+		#secondary {
+			min-width: 0px;
+			width: auto;
+			max-width: 600px;
+		}
 
-	/* hides the recommend when there is a playlist */
-	#related {
-		display: none;
+		/* hides the recommend when there is a playlist */
+		#related {
+			display: none;
+		}
+		body {
+			overflow-x: hidden;
+		}
+		button.ytp-autonav-toggle {
+			display: none;
+		}
+		.ytp-fullscreen-grid {
+			display: none;
+		}
+		.ytp-gradient-bottom {
+			display: none;
+		}
 	}
-	body {
-		overflow-x: hidden;
-	}
-	button.ytp-autonav-toggle {
-		display: none;
-	}
-	.ytp-fullscreen-grid {
-		display: none;
-	}
-	.ytp-gradient-bottom {
-		display: none;
-	}
-
 	// embeds
-
-	.fullscreen-watch-next-entrypoint-wrapper {
-		display: none;
-	}
-	ytm-fullscreen-related-videos-entry-point-view-model {
-		display: none;
+	&[page-path*="embed"] {
+		.fullscreen-watch-next-entrypoint-wrapper {
+			display: none;
+		}
+		ytm-fullscreen-related-videos-entry-point-view-model {
+			display: none;
+		}
 	}
 }
 
