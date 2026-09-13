@@ -1,44 +1,57 @@
 /* Home page feed  */
 section:has(> main) {
-  justify-content: end;
+	justify-content: end;
 }
 
-:root[page-path="/"][instagram-hide-feed="true"] main {
-  display: none;
+:root[page-path="/"][instagram-hide-feed="true"] {
+	article {
+		display: none;
+	}
 }
-
 /* explore page feed*/
-:root[page-path="/explore/"][instagram-hide-explore-feed="true"] main {
-  display: none;
+:root[page-path="/explore/"][instagram-hide-explore-feed="true"] {
+	a[href*="/p/"] {
+		display: none;
+	}
+	[role="progressbar"] {
+		display: none;
+	}
 }
 
-/* explore sidebar button */
-:root[instagram-hide-explore-feed="true"]
-  div:has(> span):has(a[href*="explore"]) {
-  display: none;
-  outline: 1px solid red;
-}
-
-:root[instagram-shortform="hidden"],
+:root[instagram-shortform="hide"],
 :root[instagram-shortform="block"] {
-  // hide reels in sidebar
-  div:has(> span):has(a[href*="reels"]) {
-    display: none;
-  }
-  *[role="toolbar"] {
-    display: none;
-  }
+	a[href*="reel"] {
+		display: none;
+	}
+	// hide reels in sidebar
+	div:has(> span):has(a[href*="reels"]) {
+		display: none;
+	}
+	*[role="toolbar"] {
+		display: none;
+	}
+
+	[role="tablist"] {
+		div:has(> a[href*="reel"]) {
+			display: none;
+		}
+	}
 }
 
 // hide reels when they are blocked
-:root[instagram-shortform="block"] {
-  main {
-    display: none;
-  }
+:root[instagram-shortform="block"][page-path*="reel"] {
+	main {
+		display: none;
+	}
 }
 
 :root[instagram-hide-more-from-feed="true"][page-path*="/reel"] {
-  div:not(:has(video)):has(a[href*="/p/"] img) {
-    display: none;
-  }
+	div:not(:has(video)):has(a[href*="/p/"] img) {
+		display: none;
+	}
+}
+:root[instagram-hide-suggested-follows-feed="true"] {
+	div:has(> * > [href*="/explore/people"]) {
+		display: none;
+	}
 }
