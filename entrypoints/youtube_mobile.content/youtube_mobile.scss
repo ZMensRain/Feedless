@@ -15,7 +15,8 @@
 :root[youtube-hide-explore="true"] {
 	navigation-item-view-model:has([href*="/gaming"]),
 	navigation-item-view-model:has([href*="/podcasts"]),
-	navigation-item-view-model:has([href*="/channel/"]) {
+	navigation-item-view-model:has([href*="/channel/"]),
+	navigation-item-view-model:has([href*="/playables"]) {
 		display: none;
 	}
 
