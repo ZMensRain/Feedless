@@ -21,14 +21,16 @@
 	aside[class*="popular-communities"] {
 		display: none;
 	}
-}
 
-:root[page-path="/news/"] {
-	.subgrid-container {
-		display: none;
+	&[page-path*="/r/popular/"] {
+		.subgrid-container {
+			display: none;
+		}
 	}
 }
 
-community-highlight-carousel {
-	display: none;
+:root[page-path="/news/"][reddit-hide-news-feed="true"] {
+	.subgrid-container {
+		display: none;
+	}
 }
