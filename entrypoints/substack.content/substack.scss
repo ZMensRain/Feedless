@@ -63,3 +63,11 @@
 // [role="article"]:has([class*="lucide-x"]) {
 // 	background-color: red;
 // }
+:root[substack-hide-recommend-for-you-feed="true"] {
+	[class*="exploreSidebar"] {
+		div:has([href="https://substack.com/leaderboard/for-you"])
+		{
+			display: none;
+		}
+	}
+}
