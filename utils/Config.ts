@@ -124,7 +124,7 @@ function shortFormKeys(platform: string): ConfigurationKey[] {
 		{
 			HumanName: "Shortform",
 			Key: `local:${platform}-shortform`,
-			Values: ["block", "show", "hide"],
+			Values: ["block", "hide", "show"],
 			Max: "block",
 		},
 	];
