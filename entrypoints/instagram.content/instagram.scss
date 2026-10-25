@@ -54,4 +54,8 @@ section:has(> main) {
 	div:has(> * > [href*="/explore/people"]) {
 		display: none;
 	}
+
+	main > div > div:last-child {
+		display: none;
+	}
 }

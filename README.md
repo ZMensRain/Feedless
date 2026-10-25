@@ -13,11 +13,10 @@ Every platform that is supported that has shortform content should have a config
 
 ## Non-shortform Content
 
-every platform with a feed should have a single config called **{platform}-hide-feed** either **"true"** or **"false"** that controls whether the feed is hidden on all pages, for platforms like facebook with multiple types of feeds there should be a **{platform}-hide-{feedtype}-feed** also either **"true"** or **"false"**
+Every platform with a feed should have a single config called **{platform}-hide-feed** either **"true"** or **"false"** that controls whether the feed is hidden on all pages, for platforms like facebook with multiple types of feeds there should be a **{platform}-hide-{feedtype}-feed** also either **"true"** or **"false"**
 
 If the home feed is removed and it is reasonably possible the search bar and logo or a label should be centred where the feed once was.
 
-In cases such as Pinterest where the search results are a feed themselves a special feed type should be created called **{platform}-hide-search-feed** either **"true"** or **"false"** defaults to **"false"**
 
 ## What will not be done
 
@@ -35,9 +34,7 @@ In cases such as Pinterest where the search results are a feed themselves a spec
 - [x] Facebook
 - [x] BlueSky
 - [x] Instagram
-- [ ] Amazon
 - [x] YouTube music
-- [ ] Spotify
 
 # Building
 
