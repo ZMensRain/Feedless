@@ -69,7 +69,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
 		HumanName: "LinkedIn",
 	},
 	"www.reddit.com": {
-		Keys: feedKeys("reddit", ["explore", "related-posts", "popular-communities", "news"]),
+		Keys: feedKeys("reddit", ["explore", "related-posts", "popular-communities", "news", "subreddit"]),
 		HumanName: "Reddit",
 	},
 	"www.tiktok.com": {
@@ -81,7 +81,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
 		HumanName: "Facebook",
 	},
 	"www.instagram.com": {
-		Keys: [...feedKeys("instagram", ["explore", "more-from"]), ...shortFormKeys("instagram")],
+		Keys: [...feedKeys("instagram", ["explore", "more-from", "suggested-follows"]), ...shortFormKeys("instagram")],
 		HumanName: "Instagram",
 	},
 	"music.youtube.com": {
@@ -101,7 +101,7 @@ export const ConfigurationShape: Record<string, PlatformConfiguration> = {
 	},
 	"substack.com": {
 		Keys: [
-			...feedKeys("substack", ["explore", "up-next", "new-bestsellers", "you-may-know"]),
+			...feedKeys("substack", ["explore", "up-next", "new-bestsellers", "you-may-know", "recommend-for-you"]),
 			booleanKey("local:substack-hide-related", "Hide Related"),
 		],
 		HumanName: "Substack",
@@ -124,7 +124,7 @@ function shortFormKeys(platform: string): ConfigurationKey[] {
 		{
 			HumanName: "Shortform",
 			Key: `local:${platform}-shortform`,
-			Values: ["block", "show", "hide"],
+			Values: ["block", "hide", "show"],
 			Max: "block",
 		},
 	];

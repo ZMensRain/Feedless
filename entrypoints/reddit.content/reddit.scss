@@ -21,9 +21,15 @@
 	aside[class*="popular-communities"] {
 		display: none;
 	}
+
+	&[page-path*="/r/popular/"] {
+		.subgrid-container {
+			display: none;
+		}
+	}
 }
 
-:root[page-path="/news/"] {
+:root[page-path="/news/"][reddit-hide-news-feed="true"] {
 	.subgrid-container {
 		display: none;
 	}

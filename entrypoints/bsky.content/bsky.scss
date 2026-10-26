@@ -1,21 +1,26 @@
 // hides feed on home screen
 :root[bsky-hide-feed="true"] {
-  &[page-path="/"] {
-    main {
-      display: none;
-    }
-  }
-  a[href="/feeds"] {
-    display: none !important;
-  }
+	&[page-path="/"] {
+		main {
+			display: none;
+		}
+	}
+	a[href="/feeds"] {
+		display: none !important;
+	}
 }
 
-:root[bsky-hide-trending="true"] [href*="trending"] {
-  display: none;
+:root[bsky-hide-trending="true"] {
+	[href*="trending"] {
+		display: none;
+	}
+	main ~ div div:has(> * > [href*="profile/did"]) {
+		display: none;
+	}
 }
 
-:root[bsky-hide-explore-feed][page-path="/search/"]:not([page-params*="q="]) {
-  div:has([href*="profile"]):not(:has(nav, input)) {
-    display: none;
-  }
+:root[bsky-hide-explore-feed="true"][page-path="/search/"]:not([page-params*="q="]) {
+	div:has([href*="profile"]):not(:has(nav, input)) {
+		display: none;
+	}
 }

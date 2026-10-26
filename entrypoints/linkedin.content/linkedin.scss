@@ -1,46 +1,53 @@
 /* Removes feed */
 
 :root[linkedin-hide-feed="true"] {
-  div[data-testid="mainFeed"] > :not(:nth-child(1)) {
-    display: none;
-  }
-  .feed-container {
-    display: none !important;
-  }
+	div[data-testid="mainFeed"] > :nth-child(2) {
+		display: none !important;
+	}
+	[data-testid="mainFeed"] {
+		[role="listitem"]:has([id*="FeedType_MAIN_FEED_RECENT"]) {
+			opacity: 0 !important;
+			visibility: hidden;
+		}
+	}
+
+	// Mobile
+	li.feed-item {
+		display: none;
+	}
 }
 
 :root[linkedin-hide-premium-upsells="true"] {
-  /* premium upsells */
-  div:has(> *[data-view-name="premium-nav-upsell-text"]) {
-    display: none !important;
-  }
+	/* premium upsells */
+	div:has(> *[data-view-name="premium-nav-upsell-text"]) {
+		display: none !important;
+	}
 
-  div:has(> *[data-view-name="premium-upsell-link"]) {
-    display: none !important;
-  }
-  div:has(> * > div[data-view-name="identity-module-upsell"]) {
-    display: none !important;
-  }
+	div:has(> *[data-view-name="premium-upsell-link"]) {
+		display: none !important;
+	}
+	div:has(> * > div[data-view-name="identity-module-upsell"]) {
+		display: none !important;
+	}
 
-  div:has(> [id*="premium"]) {
-    display: none !important;
-  }
+	div:has(> [id*="premium"]) {
+		display: none !important;
+	}
 
-  .job-details-module:has([href*="premium/products"]) {
-    display: none !important;
-  }
-  [class*="premium"] {
-    display: none !important;
-  }
+	.job-details-module:has([href*="premium/products"]) {
+		display: none !important;
+	}
+	[class*="premium"] {
+		display: none !important;
+	}
 
-  // some weird crap
-  nav + div {
-    display: none !important;
-  }
+	// some weird crap
+	nav + div {
+		display: none !important;
+	}
 }
 
 // hides the add to your feed section
-:root[linkedin-hide-add-to-your-feed="true"]
-  div:has(> * > [href*="/mynetwork/discover-hub/"]) {
-  display: none;
+:root[linkedin-hide-add-to-your-feed="true"] div:has(> * > [href*="/mynetwork/discover-hub/"]) {
+	display: none;
 }
