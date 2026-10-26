@@ -1,6 +1,6 @@
 # Install
-Firefox:  https://addons.mozilla.org/en-US/firefox/addon/feedless/
-Chromium: https://chromewebstore.google.com/detail/feedless/pienkcnnlpfhghdjihanfgafmhioacgk
+- Firefox:  https://addons.mozilla.org/en-US/firefox/addon/feedless/
+- Chromium: https://chromewebstore.google.com/detail/feedless/pienkcnnlpfhghdjihanfgafmhioacgk
 
 # Manifest/Scope
 
